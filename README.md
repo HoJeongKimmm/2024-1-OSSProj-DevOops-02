@@ -1,6 +1,6 @@
-Class : Ossproj
-Name : dongwan kim
-일자 : 2024.3.27.11
+class : OSSProj  
+Name : Dongwan Kim  
+Date : 27.Mar , 2024
 
 # 2024-1-OSSProj-DevOops-02
 
