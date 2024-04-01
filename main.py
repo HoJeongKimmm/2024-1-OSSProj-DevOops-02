@@ -1,1 +1,1 @@
-print("Hello 김호정!")
+print("Hello 천기정!")
