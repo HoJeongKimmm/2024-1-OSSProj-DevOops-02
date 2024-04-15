@@ -43,19 +43,23 @@
 
 - 프로토타입 설계 결과물
   - 이력서 생성 및 관리 페이지
+<br><img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/a38c5974-cf00-4fe0-b305-e064f06fb7a8" width="50%"><br>
 
   - 수업별 팀원 모집 메인 페이지
+<br><img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/e65de896-3ff3-45f9-be4f-46ecffad00e7" width="50%">
 
   - 수업별 팀원 모집 상세 페이지
-
+<br><img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/f5b61347-9b3b-4dc8-84cc-9ea6eb3401da" width="50%"><br>
 
 - 백엔드 설계
-
+<br><img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/678f4582-c283-44cb-9d71-abfaf83d85b8" width="50%"><br>
 (그림 1) 사용자 ↔ 시스템 사이 상호작용을 그림으로 표현한 유스케이스 다이어그램
-
+<br>
+<img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/c75c8555-6c6a-4d29-a099-02d3c3b89947" width="50%"><br>
 (그림 2) UML
 <br><img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/f241c868-ddde-4f73-87d4-372185110fb8" width="50%"><br>
 (그림 3) 프로젝트 전체 구조
+
 ### (3) 대안 도출 및 구현 계획
 - 프로젝트 및 팀 빌딩 기능
   - 직접 구현 vs 외부 API 사용
@@ -98,7 +102,9 @@
 - 교수님: 교수님들 또한 학생 개개인의 능력을 펼치기 쉽지 않은 프로젝트 수업때문에 많은 고민을 하신다. 이 팀 매칭 플랫폼을 통해 간편하게 팀을 구성하고, 퀄리티 높은 프로젝트를 받아 볼 수 있게 된다.
 - 공모전과 프로젝트의 퀄리티 향상: 학생들은 보다 다양한 팀원들을 만나며, 서로 선영향을 주며 발전하고 성장할 수 있다, 이를 통해 공모전들에서 동국대학교 학생들의 프로젝트 퀄리티가 향상될 것이고, 선의의 경쟁을 통해 더 발전된 결과물을 얻을 수 있을 것이다.
 ## 2.5 추진일정
-- 부 작업에 대한 간트 차트
+- 세부 작업에 대한 간트 차트
+
+<img width="70%" alt="image" src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/d13b0041-3918-47c7-819d-8c41d2b124cc">
 
 - 세부 작업 별 구성원의 역할
   - 천기정: 백엔드
