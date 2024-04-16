@@ -59,10 +59,10 @@
 
 - 백엔드 설계
 <br><img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/678f4582-c283-44cb-9d71-abfaf83d85b8" width="50%"><br>
-(그림 1) 사용자 ↔ 시스템 사이 상호작용을 그림으로 표현한 유스케이스 다이어그램
+(그림 1) 전체적인 시스템 구조
 <br>
 <img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/c75c8555-6c6a-4d29-a099-02d3c3b89947" width="50%"><br>
-(그림 2) UML
+(그림 2) 유스케이스 다이어그램
 <br><img src="https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/assets/162280740/f241c868-ddde-4f73-87d4-372185110fb8" width="50%"><br>
 (그림 3) 프로젝트 전체 구조
 
