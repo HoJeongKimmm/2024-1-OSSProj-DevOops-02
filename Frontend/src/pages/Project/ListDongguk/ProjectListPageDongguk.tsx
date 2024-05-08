@@ -1,9 +1,9 @@
 /* eslint-disable  */
 import { CommonHeader } from 'components/CommonHeader'
 import { ProjectCard } from 'components/ProjectCard'
-import projectListSampleJson from 'constants/json/project_list_sample.json'
+import projectListSampleJson from 'constants/json/class_list_sample.json'
 import React, { FC, useEffect, useState } from 'react'
-import { ProjectListType, ProjectType } from 'types/project'
+import { ProjectListType, ProjectType } from 'types/class'
 import { camelizeKey } from 'utils/camelizeKey'
 import {
   ProjectCardContainer,
@@ -72,9 +72,11 @@ export const ProjectListPageDongguk: FC<ProjectListPageProps> = ({ className }) 
 
   const filteredProjectListData = projectListData.filter(
     (projectItem) =>
+      projectItem.kindType == 'CLASS' &&
       projectItem.title.toLowerCase().includes(search.toLowerCase()) &&
       projectItem.projectType.toLowerCase().includes(projectTypeSelect.toLowerCase()) &&
-      projectItem.requireMemberList.some((member) => member.developmentStack.toLowerCase().includes(stackTypeSelect)) &&
+      projectItem.professor.toLowerCase().includes(stackTypeSelect.toLowerCase()) &&
+      // projectItem.requireMemberList.some((member) => member.developmentStack.toLowerCase().includes(stackTypeSelect)) &&
       (locationTypeSelect === '' || projectItem.location === parseInt(locationTypeSelect))
   )
 

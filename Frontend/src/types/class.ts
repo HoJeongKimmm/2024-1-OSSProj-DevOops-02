@@ -38,6 +38,7 @@ export type ProjectItemType = {
   projectStartDate: string
   projectEndDate: string
   valid: ProjectValidType
+  professor: string
   kindType: String
   content: string
   userList: UserInfoListType
@@ -91,7 +92,10 @@ export type UserInfoType = {
   profile?: any
   developmentStackList: DevelopmentStackListType
   status: string
+  campus: String
 }
+
+export type ClassUserInfoListType = UserInfoType[]
 
 export type UserInfoListType = UserInfoType[]
 

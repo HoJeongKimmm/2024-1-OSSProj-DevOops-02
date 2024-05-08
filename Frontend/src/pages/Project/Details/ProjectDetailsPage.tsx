@@ -14,10 +14,7 @@ import {
   BannerImg,
   Container,
   ContentContainer,
-  ContentLi,
-  ContentTitleTypo,
   ContentTypo,
-  ContentUl,
   DevelopmentStackTag,
   DevelopmentStackTagContainer,
   MainContainer,
@@ -61,6 +58,7 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
 
   const { projectKey = 0 } = useParams()
   const projectListSampleData: ProjectListType = camelizeKey(projectListSampleJson.project_list) as ProjectListType
+
   const [projectItem, setProjectItem] = useState<ProjectItemType>()
 
   const [liked, setLiked] = useState(false)
@@ -114,7 +112,6 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
     }
     return null
   }
-
   useEffect(() => {
     let data: GetProjectDetailsRequestType = {
       projectKey: 0,
@@ -161,6 +158,7 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
                 </DevelopmentStackTag>
               ))}
             </DevelopmentStackTagContainer>
+
             <MenuContainer>
               <MenuLeaderUserInfoContainer>
                 <MenuLeaderUserInfoProfileImg src={missingAvatarImg} />
@@ -174,10 +172,12 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
               </MenuCountContainer>
             </MenuContainer>
             <ContentContainer>
-              <ContentTitleTypo>프로젝트 시작 동기</ContentTitleTypo>
+              <ContentTypo dangerouslySetInnerHTML={{ __html: projectItem.content || '' }} />
+              {/* <ContentTitleTypo>프로젝트 시작 동기</ContentTitleTypo>
               <ContentUl>
                 <ContentLi>
                   <ContentTypo>장소기반으로 모임을 제시하여...</ContentTypo>
+                  <ContentTypo dangerouslySetInnerHTML={{ __html: projectItem.content || '' }} />
                 </ContentLi>
                 <ContentLi>
                   <ContentTypo>모임을 통해 자신의 관심사를...</ContentTypo>
@@ -200,7 +200,7 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
                 <ContentLi>
                   <ContentTypo>모임을 통해 자신의 관심사를...</ContentTypo>
                 </ContentLi>
-              </ContentUl>
+              </ContentUl> */}
             </ContentContainer>
           </MainContainer>
           <SideSectionContainer>

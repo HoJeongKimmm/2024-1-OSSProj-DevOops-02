@@ -52,10 +52,10 @@ import {
 } from './styled'
 import { GetProjectDetailsRequestType, GetProjectDetailsResponseType, getProjectDetails } from 'api/getProjectDetails'
 import { List, Space, Tag } from 'antd'
-// import userListSampleJson from 'constants/json/user_list_sample.json'
+import userListSampleJson from 'constants/json/user_list_sample.json'
 import Avatar from 'assets/images/missing_avatar.png'
 import { StackTag, UserIcon, UserNameTypo } from './styled'
-// import { UserInfoListType } from 'types/project'
+import { UserInfoListType } from 'types/project'
 
 type ProjectDetailsPageProps = {
   className?: string
@@ -66,16 +66,16 @@ export const ProjectDetailsDonggukPage: FC<ProjectDetailsPageProps> = ({ classNa
 
   //사용자 리스트
 
-  // const userListData = camelizeKey(userListSampleJson.user_list) as UserInfoListType
+  const userListData = camelizeKey(userListSampleJson.user_list) as UserInfoListType
 
-  // const filteredUserListData = userListData.filter(
-  //   (userItem) =>
-  //     userItem.userId++ &&
-  //     userItem.nickname.toLowerCase() &&
-  //     userItem.email &&
-  //     userItem.developmentStackList &&
-  //     userItem.status
-  // )
+  const filteredUserListData = userListData.filter(
+    (userItem) =>
+      userItem.userId++ &&
+      userItem.nickname.toLowerCase() &&
+      userItem.email &&
+      userItem.developmentStackList &&
+      userItem.status
+  )
 
   const { projectKey = 0 } = useParams()
   const projectListSampleData: ProjectListType = camelizeKey(projectListSampleJson.project_list) as ProjectListType
@@ -207,7 +207,7 @@ export const ProjectDetailsDonggukPage: FC<ProjectDetailsPageProps> = ({ classNa
             </ContentContainer>
 
             <List
-              dataSource={projectItem.userList}
+              dataSource={filteredUserListData}
               bordered
               renderItem={(item) => (
                 <List.Item

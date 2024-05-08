@@ -157,12 +157,13 @@ export const UserProjectCreatePage: FC<UserProjectCreatePageProps> = ({ classNam
         alert('입력값을 모두 채워주세요.')
         return
       }
+
       const data = {
         title: title,
-        projectType: projectType,
+        projectType: projectType, //학과
         requireMemberList: filteredrequireMemberList,
-        leaderDevelopmentStack: leaderDevelopmentStack,
-        location: location,
+        kindType: leaderDevelopmentStack, //모집종류
+        campus: location,
         projectStartDate: projectStartDate,
         projectEndDate: projectEndDate,
         projectContent: projectContent,
@@ -185,6 +186,7 @@ export const UserProjectCreatePage: FC<UserProjectCreatePageProps> = ({ classNam
           // eslint-disable-next-line no-undef
           console.error('Error :', error)
         })
+      console.log(projectContent)
     } else {
       // eslint-disable-next-line no-undef
       alert('프로젝트가 생성되었습니다.')
@@ -317,12 +319,11 @@ export const UserProjectCreatePage: FC<UserProjectCreatePageProps> = ({ classNam
               </InputTitleContainer>
               <InputContainer>
                 <LeaderPositionContainer>
-                  <InputTitleRequired>팀장 포지션</InputTitleRequired>
+                  <InputTitleRequired>모집 종류</InputTitleRequired>
                   <Form.Item name="leader-position">
-                    <Select placeholder="팀장 포지션" onChange={(value) => setLeaderDevelopmentStack(value)}>
-                      <Option value="FRONTEND">프론트</Option>
-                      <Option value="BACKEND">백엔드</Option>
-                      <Option value="ETC">기타</Option>
+                    <Select placeholder="모집 종류" onChange={(value) => setLeaderDevelopmentStack(value)}>
+                      <Option value="COMPETITION">공모전</Option>
+                      <Option value="CLASS">강의</Option>
                     </Select>
                   </Form.Item>
                 </LeaderPositionContainer>

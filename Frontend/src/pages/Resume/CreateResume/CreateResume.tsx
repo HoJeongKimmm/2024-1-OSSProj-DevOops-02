@@ -101,11 +101,23 @@ export const CreateResume: FC<ProjectListPageProps> = ({ className }) => {
       {/* <BannerImg src={bannerBackgroundImg} alt={'배너 배경 이미지'} /> */}
       <Container>
         <Editor
-          initialValue="# 기획서
-
-          1. 김동완
-          2. 김호정
-          3. 천기정"
+          initialValue="# 이력서
+          자기자신을 한줄로 소개해주세요 !
+         
+          ### 학력
+          - ㅇㅇ고등학교 (2013~2016)
+          - 동국대학교 통계학과 (2016~2020)
+          - 동국대학교 융합소프트웨어 (2017~2020)
+          - ---
+          ### 인턴 및 대외 활동
+          - 카카오뱅크(2019~2020)
+          - ㅇㅇ은행 서포터즈(2019~2020)
+          - 빅데이터학회 (b.a.f)
+          - ---
+          ### skills
+          - flutter
+          - react, reactNative
+          - Spring "
           // 초기 입력 문구
           previewStyle="vertical" // 프리뷰 스타일 ['tab', 'vertical']
           height="500px" // 에디터 높이값
