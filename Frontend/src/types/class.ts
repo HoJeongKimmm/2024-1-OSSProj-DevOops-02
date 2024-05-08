@@ -93,6 +93,7 @@ export type UserInfoType = {
   developmentStackList: DevelopmentStackListType
   status: string
   campus: String
+  resume: string
 }
 
 export type ClassUserInfoListType = UserInfoType[]

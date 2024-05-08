@@ -4,7 +4,7 @@
       "user_id": 0,
       "status": "매칭완료",
       "email": "aaa.aaa@aaa",
-      "nickname": "고구마멈멍",
+      "nickname": "김동완",
       "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
       "development_stack_list": [
         {
@@ -23,7 +23,45 @@
       "user_id": 1,
       "email": "bbb.bbb@bbb",
       "status": "매칭완료",
-      "nickname": "감자칩",
+      "nickname": "천기정",
+      "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
+      "development_stack_list": [
+        {
+          "stack_id": 0,
+          "development_stack": "BACKEND",
+          "grade": 1
+        },
+        {
+          "stack_id": 1,
+          "development_stack": "PYTHON",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "user_id": 2,
+      "email": "ccc.ccc@ccc",
+      "status": "매칭중.....",
+      "nickname": "김호정",
+      "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
+      "development_stack_list": [
+        {
+          "stack_id": 0,
+          "development_stack": "BACKEND",
+          "grade": 1
+        },
+        {
+          "stack_id": 1,
+          "development_stack": "SPRING",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "user_id": 3,
+      "status": "매칭완료",
+      "email": "aaa.aaa@aaa",
+      "nickname": "이길섭",
       "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
       "development_stack_list": [
         {
@@ -39,10 +77,29 @@
       ]
     },
     {
-      "user_id": 2,
+      "user_id": 4,
+      "email": "bbb.bbb@bbb",
+      "status": "매칭완료",
+      "nickname": "박효순",
+      "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
+      "development_stack_list": [
+        {
+          "stack_id": 0,
+          "development_stack": "BACKEND",
+          "grade": 1
+        },
+        {
+          "stack_id": 1,
+          "development_stack": "SPRING",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "user_id": 5,
       "email": "ccc.ccc@ccc",
       "status": "매칭중.....",
-      "nickname": "바나나킥",
+      "nickname": "오현식",
       "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
       "development_stack_list": [
         {
@@ -52,7 +109,64 @@
         },
         {
           "stack_id": 1,
-          "development_stack": "APP_CLIENT",
+          "development_stack": "FLUTTER",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "user_id": 6,
+      "email": "ccc.ccc@ccc",
+      "status": "매칭중.....",
+      "nickname": "이주빈",
+      "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
+      "development_stack_list": [
+        {
+          "stack_id": 0,
+          "development_stack": "WEB_FRONTEND",
+          "grade": 1
+        },
+        {
+          "stack_id": 1,
+          "development_stack": "JAVA GUI",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "user_id": 7,
+      "email": "ccc.ccc@ccc",
+      "status": "매칭중.....",
+      "nickname": "김승수",
+      "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
+      "development_stack_list": [
+        {
+          "stack_id": 0,
+          "development_stack": "BACKEND",
+          "grade": 1
+        },
+        {
+          "stack_id": 1,
+          "development_stack": "DATABASE",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "user_id": 8,
+      "email": "ccc.ccc@ccc",
+      "status": "매칭중.....",
+      "nickname": "정준영",
+      "introduce": " 풀스택 개발자를 목표로 공부하고 있습니다. 노래 추천 앱 프로젝트의 팀장을 맡고 있습니다.",
+      "development_stack_list": [
+        {
+          "stack_id": 0,
+          "development_stack": "DATA_ANALYSIS",
+          "grade": 1
+        },
+        {
+          "stack_id": 1,
+          "development_stack": "JUPYTER",
           "grade": 3
         }
       ]

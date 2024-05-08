@@ -20,6 +20,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'styles/global.css'
 import { ProjectDetailsDonggukPage } from 'pages/Project/DetailsDongguk'
+import { ViewResume } from 'pages/Resume/ViewResume'
 
 // eslint-disable-next-line no-undef
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
@@ -37,6 +38,7 @@ root.render(
           <Route path="/user/profile" element={<UserProfilePage />} />
           <Route path="/user/notice/list" element={<UserNoticeListPage />} />
           <Route path="/resume/createResume" element={<CreateResume />} />
+          <Route path="/user/:userid" element={<ViewResume />} />
           {/* <Route path="/user/project" element={<UserProjectPage />} /> */}
           <Route path="/user/project/create" element={<UserProjectCreatePage />} />
           <Route path="/user/project/manage/:projectKey/:projectTitle" element={<UserProjectManagePage />} />
