@@ -56,6 +56,7 @@ import { List, Space, Tag } from 'antd'
 import Avatar from 'assets/images/missing_avatar.png'
 import { StackTag, UserIcon, UserNameTypo } from './styled'
 // import { UserInfoListType } from 'types/project'
+import { Link } from 'react-router-dom'
 
 type ProjectDetailsPageProps = {
   className?: string
@@ -213,14 +214,22 @@ export const ProjectDetailsDonggukPage: FC<ProjectDetailsPageProps> = ({ classNa
                 <List.Item
                   key={item.userId}
                   actions={[
-                    <Tag color={`${item.status}` == '매칭완료' ? 'processing' : 'red'} key={`a-${item.userId}`}>
+                    <Tag color={`${item.status}` === '매칭완료' ? 'processing' : 'red'} key={`a-${item.userId}`}>
                       {item.status}
                     </Tag>,
                   ]}
                 >
                   <List.Item.Meta
-                    avatar={<UserIcon src={Avatar} alt={'프로필 이미지'} />}
-                    title={<UserNameTypo>{item.nickname}</UserNameTypo>}
+                    avatar={
+                      <Link to={`/user/${item.userId}`}>
+                        <UserIcon src={Avatar} alt={'프로필 이미지'} />
+                      </Link>
+                    }
+                    title={
+                      <Link to={`/user/${item.userId}`}>
+                        <UserNameTypo>{item.nickname}</UserNameTypo>
+                      </Link>
+                    }
                     description={
                       <Space size={[0, 'small']} wrap>
                         {item.developmentStackList.map((stack) => (
