@@ -65,13 +65,17 @@ const modules = {
 }
 export const CreateProjectSection: FC<CreateProjectSectionProps> = ({ className, setProjectContent }) => {
   const onChangeContents = (contents: any) => {
-    setProjectContent(contents);
+    setProjectContent(contents)
+
+    // Save contents to local storage
+    // eslint-disable-next-line no-undef
+    localStorage.setItem('projectContents', contents)
   }
-  
+
   return (
     <Root className={className}>
       <InputTitleRequired>내용</InputTitleRequired>
-      <ReactQuillStyled modules={modules} onChange={onChangeContents}/>
+      <ReactQuillStyled modules={modules} onChange={onChangeContents} />
     </Root>
   )
 }

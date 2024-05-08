@@ -21,7 +21,8 @@
       "like_number": 10,
       "position": "LEADER",
       "location": 0,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 1,
@@ -44,7 +45,8 @@
       "like_number": 10,
       "position": "MEMBER",
       "location": 4,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 2,
@@ -67,7 +69,8 @@
       "like_number": 10,
       "position": "MEMBER",
       "location": 8,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 3,
@@ -90,7 +93,8 @@
       "like_number": 10,
       "position": "NORMAL",
       "location": 2,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 4,
@@ -113,7 +117,8 @@
       "like_number": 10,
       "position": "NORMAL",
       "location": 1,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 5,
@@ -136,7 +141,8 @@
       "like_number": 10,
       "position": "NORMAL",
       "location": 10,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 6,
@@ -159,7 +165,8 @@
       "like_number": 10,
       "position": "NORMAL",
       "location": 7,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 7,
@@ -182,7 +189,8 @@
       "like_number": 10,
       "position": "MEMBER",
       "location": 0,
-      "valid": "EXPIRED"
+      "valid": "EXPIRED",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 8,
@@ -205,7 +213,8 @@
       "like_number": 10,
       "position": "NORMAL",
       "location": 0,
-      "valid": "EXPIRED"
+      "valid": "EXPIRED",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 9,
@@ -228,7 +237,8 @@
       "like_number": 10,
       "position": "NORMAL",
       "location": 2,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 10,
@@ -251,7 +261,8 @@
       "like_number": 10,
       "position": "LEADER",
       "location": 8,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     },
     {
       "key": 11,
@@ -274,7 +285,8 @@
       "like_number": 10,
       "position": "MEMBER",
       "location": 11,
-      "valid": "VALID"
+      "valid": "VALID",
+      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
     }
   ]
 }
