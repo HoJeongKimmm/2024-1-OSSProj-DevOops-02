@@ -39,31 +39,31 @@ public class Project {
     private String is_available;
     private Float avg_score;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "proj_front")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectFront> projectFronts = new ArrayList<>();
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "proj_back")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectBack> projectBacks = new ArrayList<>();
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "proj_etc")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectEtc> projectEtcs = new ArrayList<>();
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "project_member")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectMember> projectMembers = new ArrayList<>();
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "project_invitation")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Invitation> invitations = new ArrayList<>();
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "project_like")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectLike> projectLikes = new ArrayList<>();
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "project_apply")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Apply> applies = new ArrayList<>();
 

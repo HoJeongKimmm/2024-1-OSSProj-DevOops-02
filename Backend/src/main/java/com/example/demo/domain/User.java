@@ -28,19 +28,19 @@ public class User {
     private String stacks;
     private String githubId;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "user_invitation")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Invitation> invitations;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "user_member")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<ProjectMember> project_members;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "user_like")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<ProjectLike> project_likes;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "user_apply")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Apply> applys;
 
