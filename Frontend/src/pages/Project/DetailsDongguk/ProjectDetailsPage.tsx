@@ -1,4 +1,4 @@
-import defaultBackgroundImg from 'assets/images/default_background.png'
+import defaultBackgroundImg from 'assets/images/default_background2.png'
 import missingAvatarImg from 'assets/images/missing_avatar.png'
 import { CommonHeader } from 'components/CommonHeader'
 import projectListSampleJson from 'constants/json/class_list_sample.json'
