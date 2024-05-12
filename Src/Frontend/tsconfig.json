@@ -15,7 +15,9 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./src",
-    "typeRoots": ["./src/index"]
+    "typeRoots": [
+      "./src/index"
+    ]
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "deployManager.ts"]
