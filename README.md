@@ -26,6 +26,7 @@
 
 ## 중간발표
 [2_1_OSSProj_02_DevOops_중간보고서.md](https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/files/15285458/2_1_OSSProj_02_DevOops_.md) <br>
+[2_2_OSSProj_02_DevOops_중간발표자료.pdf](https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/files/15285547/2_2_OSSProj_02_DevOops_.pdf) <br>
 [2_4_OSSProj_02_DevOops_중간회의록.pdf](https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/files/15285456/2_4_OSSProj_02_DevOops_.pdf) <br>
 [2_5_OSSProj_02_DevOops_범위_일정_이슈관리.pdf](https://github.com/CSID-DGU/2024-1-OSSProj-DevOops-02/files/15285454/2_5_OSSProj_02_DevOops_._._.pdf) <br>
 
