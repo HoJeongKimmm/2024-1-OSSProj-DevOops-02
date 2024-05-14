@@ -73,4 +73,8 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Apply> applies = new ArrayList<>();
 
+    @JsonManagedReference(value = "project_status")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<Status> statuses = new ArrayList<>();
+
 }

@@ -49,5 +49,9 @@ public class User {
     @JsonManagedReference(value = "user_resume")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Resume> resumes;
+
+    @JsonManagedReference(value = "user_status")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Status> statuses;
 }
 
