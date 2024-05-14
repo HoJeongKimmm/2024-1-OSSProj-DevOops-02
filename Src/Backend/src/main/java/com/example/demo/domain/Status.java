@@ -27,7 +27,7 @@ public class Status {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public enum StatusType {
+    public enum State {
         APPLICATION,    // 신청
         PENDING,        // 대기
         APPROVED        // 승인
@@ -35,5 +35,5 @@ public class Status {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusType statusType;
+    private State state;
 }
