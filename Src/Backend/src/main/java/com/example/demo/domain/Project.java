@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import com.example.demo.domain.position.ProjectBack;
 import com.example.demo.domain.position.ProjectEtc;
 import com.example.demo.domain.position.ProjectFront;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -21,6 +22,8 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+
 
     private String title;
     private String content;

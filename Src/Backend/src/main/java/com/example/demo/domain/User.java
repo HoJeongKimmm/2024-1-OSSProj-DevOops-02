@@ -27,6 +27,8 @@ public class User {
     private String email;
     private String stacks;
     private String githubId;
+    // resume 추가
+    private String resume;
 
     @JsonManagedReference(value = "user_invitation")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -44,6 +46,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Apply> applys;
 
-
+    @JsonManagedReference(value = "user_resume")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Resume> resumes;
 }
 
