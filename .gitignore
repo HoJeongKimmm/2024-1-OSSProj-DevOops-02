@@ -29,7 +29,7 @@ replay_pid*
 .vscode
 .yml
 .gradle
-backend/demo
+Src/Backend/demo
 # front
 node_modules/
 .env
