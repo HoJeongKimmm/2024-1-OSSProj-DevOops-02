@@ -1,18 +1,18 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Class {
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,10 @@ public class Class {
     private String start_date;  // 수업 시작 날짜
     private String end_date;    // 수업 종료 날짜
 
+
+    @JsonManagedReference(value = "course_project")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Project> projects = new ArrayList<>();
 
 
 }
