@@ -75,11 +75,11 @@ public class UserService {
         return user_rp.updateResume(user);
     }
 
-    public User getResumeByUserId(Integer userId) {
+    public User getResumeByUserId(Long userId) {
         return user_rp.findResumeByUserId(userId).orElse(null);
     }
 
-    public void deleteResumeByUserId(Integer userId) {
+    public void deleteResumeByUserId(Long userId) {
         user_rp.deleteResumeByUserId(userId);
     }
 

@@ -60,7 +60,7 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public Optional<User> findResumeByUserId(Integer userId) {
+    public Optional<User> findResumeByUserId(Long userId) {
         String sql = "SELECT u FROM User u WHERE u.id = :userId";
         TypedQuery<User> query = em.createQuery(sql, User.class);
         query.setParameter("userId", userId);
@@ -68,7 +68,7 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public void deleteResumeByUserId(Integer userId) {
+    public void deleteResumeByUserId(Long userId) {
         Optional<User> userOptional = findResumeByUserId(userId);
         if(userOptional.isPresent()) {
             User user = userOptional.get();

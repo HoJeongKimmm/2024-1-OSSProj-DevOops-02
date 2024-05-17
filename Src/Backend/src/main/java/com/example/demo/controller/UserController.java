@@ -49,7 +49,7 @@ public class UserController {
 
         User saved_user = userService.join(joinDTO);
 
-        int id = saved_user.getId();
+        long id = saved_user.getId();
 
         CommonResponse commonResponse = new CommonResponse();
         if(saved_user!=null){
@@ -268,10 +268,10 @@ public class UserController {
 
     // 이력서
     @PostMapping("/user/{userId}/resume")
-    public Response saveResume(@PathVariable Integer userId, @RequestBody String resume) {
+    public Response saveResume(@PathVariable Long userId, @RequestBody String resume) {
         User user = userService.getResumeByUserId(userId);
         if(user == null) {
-            user = new User(); // Assuming User has a constructor that can set userId
+            user = new User();
             user.setId(userId);
         }
         user.setResume(resume);
@@ -280,7 +280,7 @@ public class UserController {
     }
 
     @PutMapping("/user/{userId}/resume")
-    public Response updateResume(@PathVariable Integer userId, @RequestBody String resume) {
+    public Response updateResume(@PathVariable Long userId, @RequestBody String resume) {
         User user = userService.getResumeByUserId(userId);
         if(user != null) {
             user.setResume(resume);
@@ -291,7 +291,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{userId}/resume")
-    public ResponseEntity<String> getResume(@PathVariable Integer userId) {
+    public ResponseEntity<String> getResume(@PathVariable Long userId) {
         User user = userService.getResumeByUserId(userId);
         if(user != null && user.getResume() != null) {
             return ResponseEntity.ok(user.getResume());  // 성공적으로 이력서를 찾았을 때 200 OK와 함께 이력서 반환
@@ -301,7 +301,7 @@ public class UserController {
 
 
     @DeleteMapping("/user/{userId}/resume")
-    public Response deleteResume(@PathVariable Integer userId) {
+    public Response deleteResume(@PathVariable Long userId) {
         userService.deleteResumeByUserId(userId);
         return responseService.getSuccessResult();
     }

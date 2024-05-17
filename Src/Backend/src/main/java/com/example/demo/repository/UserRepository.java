@@ -17,9 +17,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     User updateResume(User user);
 
-    Optional<User> findResumeByUserId(Integer userId);
+    Optional<User> findResumeByUserId(Long userId);
 
-    void deleteResumeByUserId(Integer userId);
+    void deleteResumeByUserId(Long userId);
+
 
     public Long login(String email, String password);
     public int duplicationCheckId(String id);

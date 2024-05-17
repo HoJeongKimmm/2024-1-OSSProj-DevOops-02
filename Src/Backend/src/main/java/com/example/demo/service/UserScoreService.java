@@ -183,7 +183,7 @@ public class UserScoreService {
             }
 
             User user = userJPARepository.findByGithubId(githubId);
-            Long user_id = user.getId();
+            Long user_id = (long) user.getId();
 
 
             Boolean check = false;
