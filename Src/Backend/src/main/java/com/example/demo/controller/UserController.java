@@ -9,6 +9,7 @@ import com.example.demo.service.*;
 import lombok.AllArgsConstructor;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +49,7 @@ public class UserController {
 
         User saved_user = userService.join(joinDTO);
 
-        Long id = saved_user.getId();
+        int id = saved_user.getId();
 
         CommonResponse commonResponse = new CommonResponse();
         if(saved_user!=null){
@@ -59,7 +60,7 @@ public class UserController {
             commonResponse.setMessage("회원가입에 실패했습니다.");
         }
 
-        return responseService.getAdminResponse(commonResponse, id);
+        return responseService.getAdminResponse(commonResponse, (long)id);
     }
 
     // 로그인
@@ -290,13 +291,14 @@ public class UserController {
     }
 
     @GetMapping("/user/{userId}/resume")
-    public Response getResume(@PathVariable Integer userId) {
+    public ResponseEntity<String> getResume(@PathVariable Integer userId) {
         User user = userService.getResumeByUserId(userId);
         if(user != null && user.getResume() != null) {
-            return new Response(true, "Success", user.getResume());
+            return ResponseEntity.ok(user.getResume());  // 성공적으로 이력서를 찾았을 때 200 OK와 함께 이력서 반환
         }
-        return responseService.getFailResult(404, "Resume not found");
+        return ResponseEntity.notFound().build();  // 이력서를 찾지 못했을 때 404 Not Found 반환
     }
+
 
     @DeleteMapping("/user/{userId}/resume")
     public Response deleteResume(@PathVariable Integer userId) {

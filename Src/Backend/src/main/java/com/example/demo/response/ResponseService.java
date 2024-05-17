@@ -1,6 +1,7 @@
 package com.example.demo.response;
 
 import com.example.demo.repository.ResponseRepository;
+import org.apache.catalina.connector.Response;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -28,6 +29,15 @@ public class ResponseService {
         return response_rp.getAdminResponse(result, isAdmin);
     }
 
+    // 성공 응답 생성
+    public Response getSuccessResult() {
+        return new Response();
+    }
+
+    // 실패 응답 생성
+    public Response getFailResult(int statusCode, String errorMessage) {
+        return new Response();
+    }
 
 
 }

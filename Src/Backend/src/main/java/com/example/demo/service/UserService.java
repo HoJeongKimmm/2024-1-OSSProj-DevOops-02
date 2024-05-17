@@ -120,5 +120,14 @@ public class UserService {
         return user_rp.findUserById(id);
     }
 
+    public User join(JoinDTO joinDTO) {
+        User user = new User();
+        user.setEmail(joinDTO.getEmail());
+        user.setIntroduce(joinDTO.getIntroduce());
+        user.setNickname(joinDTO.getNickname());
+        user.setPassword(joinDTO.getPassword());
+        user.setGithubId(joinDTO.getGitid());
+        return user_rp.save(user);
+    }
 }
 
