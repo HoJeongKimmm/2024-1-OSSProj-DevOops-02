@@ -20,8 +20,8 @@ import java.util.List;
 public class UserService {
     UserRepository user_rp;
 
-    @Autowired
-    UserJPARepository userJPARepository;
+//    @Autowired
+//    UserJPARepository userJPARepository;
 
     ApplyRepository apply_rp;
     public UserService(@Qualifier("userRepository")UserRepository user_rp,
@@ -32,17 +32,17 @@ public class UserService {
         this.apply_rp=apply_rp;
     }
 
-    public User join(JoinDTO joinDTO){
-        System.out.println("구간2");
-        User user = new User();
-        user.setEmail(joinDTO.getEmail());
-        user.setIntroduce(joinDTO.getIntroduce());
-        user.setNickname(joinDTO.getNickname());
-        user.setPassword(joinDTO.getPassword());
-        user.setGithubId(joinDTO.getGitid());
-
-        return userJPARepository.save(user);
-    }
+//    public User join(JoinDTO joinDTO){
+//        System.out.println("구간2");
+//        User user = new User();
+//        user.setEmail(joinDTO.getEmail());
+//        user.setIntroduce(joinDTO.getIntroduce());
+//        user.setNickname(joinDTO.getNickname());
+//        user.setPassword(joinDTO.getPassword());
+//        user.setGithubId(joinDTO.getGitid());
+//
+//        return userJPARepository.save(user);
+//    }
     public int duplicationCheckId(String id){return user_rp.duplicationCheckId(id);}
 
     public int duplicationCheckNickname(String nickname){return user_rp.duplicationCheckNickname(nickname);}
@@ -64,6 +64,23 @@ public class UserService {
     // 로그인
     public Long login(String email, String password){
         return user_rp.login(email, password);
+    }
+
+    // 이력서
+    public User saveResume(User user) {
+        return user_rp.saveResume(user);
+    }
+
+    public User updateResume(User user) {
+        return user_rp.updateResume(user);
+    }
+
+    public User getResumeByUserId(Integer userId) {
+        return user_rp.findResumeByUserId(userId).orElse(null);
+    }
+
+    public void deleteResumeByUserId(Integer userId) {
+        user_rp.deleteResumeByUserId(userId);
     }
 
 

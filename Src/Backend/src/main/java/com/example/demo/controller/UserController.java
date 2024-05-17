@@ -7,6 +7,7 @@ import com.example.demo.dto.UserProjectList;
 import com.example.demo.response.*;
 import com.example.demo.service.*;
 import lombok.AllArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -262,6 +263,45 @@ public class UserController {
             commonResponse.setMessage("리스트 출력 실패");
         }
         return responseService.getListResponse(commonResponse, list);
+    }
+
+    // 이력서
+    @PostMapping("/user/{userId}/resume")
+    public Response saveResume(@PathVariable Integer userId, @RequestBody String resume) {
+        User user = userService.getResumeByUserId(userId);
+        if(user == null) {
+            user = new User(); // Assuming User has a constructor that can set userId
+            user.setId(userId);
+        }
+        user.setResume(resume);
+        userService.saveResume(user);
+        return responseService.getSuccessResult();
+    }
+
+    @PutMapping("/user/{userId}/resume")
+    public Response updateResume(@PathVariable Integer userId, @RequestBody String resume) {
+        User user = userService.getResumeByUserId(userId);
+        if(user != null) {
+            user.setResume(resume);
+            userService.updateResume(user);
+            return responseService.getSuccessResult();
+        }
+        return responseService.getFailResult(404, "User not found");
+    }
+
+    @GetMapping("/user/{userId}/resume")
+    public Response getResume(@PathVariable Integer userId) {
+        User user = userService.getResumeByUserId(userId);
+        if(user != null && user.getResume() != null) {
+            return new Response(true, "Success", user.getResume());
+        }
+        return responseService.getFailResult(404, "Resume not found");
+    }
+
+    @DeleteMapping("/user/{userId}/resume")
+    public Response deleteResume(@PathVariable Integer userId) {
+        userService.deleteResumeByUserId(userId);
+        return responseService.getSuccessResult();
     }
 
 }

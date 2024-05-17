@@ -2,7 +2,6 @@ package com.example.demo.repository;
 
 import com.example.demo.domain.Project;
 import com.example.demo.domain.User;
-import com.example.demo.domain.ProjectMember;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,14 +31,10 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     //유저의 정보 조회
     public User findByid(String id) {
-        String sql = "select user from User user where id = :id";
+        String sql = "SELECT u FROM User u WHERE u.id = :id";
         TypedQuery<User> query = em.createQuery(sql, User.class);
         query.setParameter("id", id);
-        List<User> list = query.getResultList();
-        for (User entity : list) {
-            return entity;
-        }
-        return null;
+        return query.getSingleResult();
     }
 
     @Override
@@ -50,6 +45,40 @@ public class UserRepositoryImpl implements UserRepository{
         if(removed_user==null) return 1;
         else return 0;
     }
+
+    // Resume 관련 CRUD
+    @Override
+    public User saveResume(User user) {
+        em.persist(user);
+        return user;
+    }
+
+    @Override
+    public User updateResume(User user) {
+        em.merge(user);
+        return user;
+    }
+
+    @Override
+    public Optional<User> findResumeByUserId(Integer userId) {
+        String sql = "SELECT u FROM User u WHERE u.id = :userId";
+        TypedQuery<User> query = em.createQuery(sql, User.class);
+        query.setParameter("userId", userId);
+        return Optional.ofNullable(query.getSingleResult());
+    }
+
+    @Override
+    public void deleteResumeByUserId(Integer userId) {
+        Optional<User> userOptional = findResumeByUserId(userId);
+        if(userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setResume(null);
+            em.merge(user);
+        }
+    }
+
+
+
 
 
     @Override

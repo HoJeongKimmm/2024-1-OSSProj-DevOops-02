@@ -18,7 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String nickname;
     private String password;
@@ -50,8 +50,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Resume> resumes;
 
-    @JsonManagedReference(value = "user_status")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Status> statuses;
+//    @JsonManagedReference(value = "user_status")
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<Status> statuses;
+
 }
 
