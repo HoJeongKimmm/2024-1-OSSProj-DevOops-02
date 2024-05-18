@@ -179,7 +179,12 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public <S extends Project> S save(S entity) {
-        return null;
+        if (entity == null ) {
+            em.persist(entity);
+            return entity;
+        } else {
+            return em.merge(entity);
+        }
     }
 
     @Override
