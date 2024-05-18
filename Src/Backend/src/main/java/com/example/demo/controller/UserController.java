@@ -268,15 +268,20 @@ public class UserController {
 
     // 이력서
     @PostMapping("/user/{userId}/resume")
-    public Response saveResume(@PathVariable Long userId, @RequestBody String resume) {
+    public CommonResponse saveResume(@PathVariable Long userId, @RequestBody String resume) {
         User user = userService.getResumeByUserId(userId);
-        if(user == null) {
-            user = new User();
-            user.setId(userId);
+
+        CommonResponse commonResponse = new CommonResponse();
+        if (user == null) {
+            commonResponse.setStatus("FAILED");
+            commonResponse.setMessage("회원 정보 가져오기 실패");
         }
         user.setResume(resume);
         userService.saveResume(user);
-        return responseService.getSuccessResult();
+
+        commonResponse.setStatus("SUCCESS");
+        commonResponse.setMessage("이력서 저장");
+        return commonResponse;
     }
 
     @PatchMapping("/user/{userId}/resume")
