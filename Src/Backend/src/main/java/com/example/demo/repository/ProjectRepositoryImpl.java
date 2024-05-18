@@ -107,7 +107,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public List<Project> findAll() {
-        return findAll();
+        String sql = "select project from Project project";
+        TypedQuery<Project> query = em.createQuery(sql, Project.class);
+        return query.getResultList();
     }
 
     @Override
