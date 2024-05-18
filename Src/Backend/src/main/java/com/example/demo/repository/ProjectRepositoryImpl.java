@@ -160,8 +160,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 
     @Override
-    public void deleteAllById(Iterable<? extends Integer> integers) {
-
+    public void deleteAllById(Iterable<? extends Integer> ids) {
+        for (Integer id : ids) {
+            deleteById(id);
+        }
     }
 
     @Override
