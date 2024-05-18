@@ -2,10 +2,7 @@ package com.example.demo.repository;
 
 import com.example.demo.domain.Project;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Repository;
 
@@ -114,12 +111,24 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public List<Project> findAll(Sort sort) {
-        return null;
+        String sql = "select project from Project project order by " + sort.toString().replace(":", "");
+        TypedQuery<Project> query = em.createQuery(sql, Project.class);
+        return query.getResultList();
     }
 
     @Override
     public Page<Project> findAll(Pageable pageable) {
-        return null;
+        String sql = "select project from Project project";
+        TypedQuery<Project> query = em.createQuery(sql, Project.class);
+        query.setFirstResult((int) pageable.getOffset());
+        query.setMaxResults(pageable.getPageSize());
+        List<Project> projects = query.getResultList();
+
+        String countSql = "select count(project) from Project project";
+        TypedQuery<Long> countQuery = em.createQuery(countSql, Long.class);
+        long total = countQuery.getSingleResult();
+
+        return new PageImpl<>(projects, pageable, total);
     }
 
     @Override
