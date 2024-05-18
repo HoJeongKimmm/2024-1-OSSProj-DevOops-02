@@ -304,13 +304,14 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public <S extends Project> long count(Example<S> example) {
-
+        // 구현 미완
         return 0;
     }
 
     @Override
     public <S extends Project> boolean exists(Example<S> example) {
-        return false;
+        // Implementation for Example query exists
+        return findOne(example).isPresent();
     }
 
     @Override
