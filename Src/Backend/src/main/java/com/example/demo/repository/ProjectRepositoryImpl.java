@@ -197,59 +197,67 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Optional<Project> findById(Integer integer) {
-        return Optional.empty();
+    public Optional<Project> findById(Integer id) {
+        return Optional.ofNullable(em.find(Project.class, id));
     }
 
     @Override
-    public boolean existsById(Integer integer) {
-        return false;
+    public boolean existsById(Integer id) {
+        return findById(id).isPresent();
     }
 
     @Override
     public void flush() {
-
+        em.flush();
     }
 
     @Override
     public <S extends Project> S saveAndFlush(S entity) {
-        return null;
+        S savedEntity = save(entity);
+        flush();
+        return savedEntity;
     }
 
     @Override
     public <S extends Project> List<S> saveAllAndFlush(Iterable<S> entities) {
-        return null;
+        List<S> result = saveAll(entities);
+        flush();
+        return result;
     }
 
     @Override
     public void deleteAllInBatch(Iterable<Project> entities) {
-
+        entities.forEach(em::remove);
+        flush();
     }
 
     @Override
-    public void deleteAllByIdInBatch(Iterable<Integer> integers) {
-
+    public void deleteAllByIdInBatch(Iterable<Integer> ids) {
+        ids.forEach(this::deleteById);
+        flush();
     }
 
     @Override
     public void deleteAllInBatch() {
-
+        deleteAll();
+        flush();
     }
 
     @Override
-    public Project getOne(Integer integer) {
-        return null;
+    public Project getOne(Integer id) {
+        return em.getReference(Project.class, id);
     }
 
     @Override
-    public Project getById(Integer integer) {
-        return null;
+    public Project getById(Integer id) {
+        return findById(id).orElse(null);
     }
 
     @Override
-    public Project getReferenceById(Integer integer) {
-        return null;
+    public Project getReferenceById(Integer id) {
+        return em.getReference(Project.class, id);
     }
+
 
     @Override
     public <S extends Project> Optional<S> findOne(Example<S> example) {
