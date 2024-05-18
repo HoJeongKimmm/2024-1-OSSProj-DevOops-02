@@ -132,8 +132,11 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public List<Project> findAllById(Iterable<Integer> integers) {
-        return null;
+    public List<Project> findAllById(Iterable<Integer> ids) {
+        String sql = "select project from Project project where project.id in :ids";
+        TypedQuery<Project> query = em.createQuery(sql, Project.class);
+        query.setParameter("ids", ids);
+        return query.getResultList();
     }
 
     @Override
