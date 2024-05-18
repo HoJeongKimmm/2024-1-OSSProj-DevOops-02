@@ -155,8 +155,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public void delete(Project entity) {
-
+        em.remove(em.contains(entity) ? entity : em.merge(entity));
     }
+
 
     @Override
     public void deleteAllById(Iterable<? extends Integer> integers) {
