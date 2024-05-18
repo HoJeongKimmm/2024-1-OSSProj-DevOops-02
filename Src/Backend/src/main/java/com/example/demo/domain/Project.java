@@ -76,5 +76,7 @@ public class Project {
     @JsonManagedReference(value = "project_status")
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Status> statuses = new ArrayList<>();
-
+    public boolean isEmpty() {
+        return false;
+    };
 }
