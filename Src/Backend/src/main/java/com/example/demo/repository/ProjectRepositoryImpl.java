@@ -269,21 +269,42 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public <S extends Project> List<S> findAll(Example<S> example) {
-        return null;
+        // Implementation for Example query
+        TypedQuery<S> query = em.createQuery("select project from Project project where :example", (Class<S>) example.getProbeType());
+        query.setParameter("example", example.getProbe());
+        return query.getResultList();
     }
 
     @Override
     public <S extends Project> List<S> findAll(Example<S> example, Sort sort) {
-        return null;
+        // Implementation for Example query with sort
+        String jpql = "select project from Project project where :example order by " + sort.toString().replace(":", "");
+        TypedQuery<S> query = em.createQuery(jpql, (Class<S>) example.getProbeType());
+        query.setParameter("example", example.getProbe());
+        return query.getResultList();
     }
 
     @Override
     public <S extends Project> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
+        // Implementation for Example query with pageable
+        String jpql = "select project from Project project where :example";
+        TypedQuery<S> query = em.createQuery(jpql, (Class<S>) example.getProbeType());
+        query.setParameter("example", example.getProbe());
+        query.setFirstResult((int) pageable.getOffset());
+        query.setMaxResults(pageable.getPageSize());
+        List<S> result = query.getResultList();
+
+        String countJpql = "select count(project) from Project project where :example";
+        TypedQuery<Long> countQuery = em.createQuery(countJpql, Long.class);
+        countQuery.setParameter("example", example.getProbe());
+        long total = countQuery.getSingleResult();
+
+        return new PageImpl<>(result, pageable, total);
     }
 
     @Override
     public <S extends Project> long count(Example<S> example) {
+
         return 0;
     }
 
