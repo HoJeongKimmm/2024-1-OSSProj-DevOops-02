@@ -189,7 +189,11 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public <S extends Project> List<S> saveAll(Iterable<S> entities) {
-        return null;
+        List<S> result = new ArrayList<>();
+        for (S entity : entities) {
+            result.add(save(entity));
+        }
+        return result;
     }
 
     @Override
