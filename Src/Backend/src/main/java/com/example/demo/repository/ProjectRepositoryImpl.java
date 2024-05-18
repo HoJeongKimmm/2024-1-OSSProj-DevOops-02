@@ -173,7 +173,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public void deleteAll() {
-
+        String sql = "delete from Project project";
+        em.createQuery(sql).executeUpdate();
     }
 
     @Override
