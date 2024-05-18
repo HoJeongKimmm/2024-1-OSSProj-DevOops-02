@@ -261,7 +261,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public <S extends Project> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
+        // Implementation for Example query
+        TypedQuery<S> query = em.createQuery("select project from Project project where :example", (Class<S>) example.getProbeType());
+        query.setParameter("example", example.getProbe());
+        return query.getResultStream().findFirst();
     }
 
     @Override
