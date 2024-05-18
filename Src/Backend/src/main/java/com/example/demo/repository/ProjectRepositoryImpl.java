@@ -91,7 +91,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public int getVisited_number(int project_id) {
-        return 0;
+        Project project = findByProjectId(project_id);
+        return project != null ? project.getVisited_number() : 0;
     }
 
     @Override
