@@ -141,12 +141,16 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public long count() {
+        //아직 구현 못함
         return 0;
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
+    public void deleteById(Integer id) {
+        Project project = findByProjectId(id);
+        if (project != null) {
+            em.remove(project);
+        }
     }
 
     @Override
