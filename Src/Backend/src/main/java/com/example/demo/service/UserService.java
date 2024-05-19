@@ -1,133 +1,73 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Project;
 import com.example.demo.domain.User;
-import com.example.demo.dto.JoinDTO;
-import com.example.demo.repository.ApplyRepository;
-import com.example.demo.repository.UserJPARepository;
+import com.example.demo.dto.UserDTO;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Transactional
 @Service
+@Transactional
 public class UserService {
-    UserRepository user_rp;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-//    @Autowired
-//    UserJPARepository userJPARepository;
-
-    ApplyRepository apply_rp;
-    public UserService(@Qualifier("userRepository")UserRepository user_rp,
-                       @Qualifier ("applyRepository")ApplyRepository apply_rp)
-    {
-        this.user_rp = user_rp;
-
-        this.apply_rp=apply_rp;
+    @Autowired
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
-//    public User join(JoinDTO joinDTO){
-//        System.out.println("구간2");
-//        User user = new User();
-//        user.setEmail(joinDTO.getEmail());
-//        user.setIntroduce(joinDTO.getIntroduce());
-//        user.setNickname(joinDTO.getNickname());
-//        user.setPassword(joinDTO.getPassword());
-//        user.setGithubId(joinDTO.getGitid());
-//
-//        return userJPARepository.save(user);
-//    }
-    public int duplicationCheckId(String id){return user_rp.duplicationCheckId(id);}
-
-    public int duplicationCheckNickname(String nickname){return user_rp.duplicationCheckNickname(nickname);}
-
-    public User findUserInfo(String id){
-        return user_rp.findByid(id);
+    public UserDTO getUserById(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return userMapper.userToUserDTO(user);
     }
 
-    public int deleteUser(String id){
-        if(user_rp.findByid(id)!=null){
-            user_rp.deleteByid(id);
-            return 1;
-        }else {
-            System.out.println("존재하지 않는 유저입니다.");
-            return 0;
+    public UserDTO createUser(UserDTO userDto) {
+        User user = userMapper.userDTOToUser(userDto);
+        user = userRepository.save(user);
+        return userMapper.userToUserDTO(user);
+    }
+
+    public UserDTO updateUser(UserDTO userDto) {
+        User existingUser = userRepository.findById(userDto.getId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        userMapper.updateUserFromDTO(userDto, existingUser);
+        existingUser = userRepository.save(existingUser);
+        return userMapper.userToUserDTO(existingUser);
+    }
+
+    public void deleteUser(Long userId) {
+        userRepository.deleteById(userId);
+    }
+
+    public List<UserDTO> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(userMapper::userToUserDTO)
+                .collect(Collectors.toList());
+    }
+
+    public UserDTO loginUser(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        if (user != null && user.getPassword().equals(password)) {
+            return userMapper.userToUserDTO(user);
+        } else {
+            throw new RuntimeException("Invalid email or password");
         }
     }
 
-    // 로그인
-    public Long login(String email, String password){
-        return user_rp.login(email, password);
+    public void logoutUser(Long userId) {
+        // 로그아웃 관련 로직을 구현합니다. 예: 세션 무효화
     }
 
-    // 이력서
-    public User saveResume(User user) {
-        return user_rp.saveResume(user);
-    }
-
-    public User updateResume(User user) {
-        return user_rp.updateResume(user);
-    }
-
-    public User getResumeByUserId(Long userId) {
-        return user_rp.findResumeByUserId(userId).orElse(null);
-    }
-
-    public void deleteResumeByUserId(Long userId) {
-        user_rp.deleteResumeByUserId(userId);
-    }
-
-
-    public String findSessionId(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        String user_id = (String)session.getAttribute("id");
-        return user_id;
-    }
-
-    public void deleteSession(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        session.invalidate();
-    }
-
-    public List<Project> findManageProjectList(String user_id){
-        List<Project> list = user_rp.findManageProjectList(user_id);
-        return list;
-    }
-
-    public List<Project> findBelongingProjects(String user_id) {
-        List<Project> list = user_rp.findBelongingProjects(user_id);
-        return list;
-    }
-
-    public User getById(Integer user_id){
-        return user_rp.getReferenceById(user_id);
-    }
-
-
-    public List<Project> findProjectList(String user_id) {
-        List<Project> list = user_rp.findProjectList(user_id);
-        return list;
-    }
-
-
-    public User findUserById(String id){
-        return user_rp.findUserById(id);
-    }
-
-    public User join(JoinDTO joinDTO) {
-        User user = new User();
-        user.setEmail(joinDTO.getEmail());
-        user.setIntroduce(joinDTO.getIntroduce());
-        user.setNickname(joinDTO.getNickname());
-        user.setPassword(joinDTO.getPassword());
-        user.setGithubId(joinDTO.getGitid());
-        return user_rp.save(user);
+    public List<UserDTO> getUsersByProjectId(Long projectId) {
+        // 프로젝트 ID로 사용자 목록을 가져오는 로직을 구현합니다.
+        return null; // 실제 구현 필요
     }
 }
-

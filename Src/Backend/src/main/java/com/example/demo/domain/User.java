@@ -1,61 +1,37 @@
 package com.example.demo.domain;
 
-import com.example.demo.domain.stacks.NodeJs;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.*;
-
 import javax.persistence.*;
-import java.io.File;
-import java.io.Serializable;
-import java.util.List;
+import lombok.Data;
 
+@Data
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 255)
     private String nickname;
+
+    @Column(nullable = false, length = 255)
     private String password;
-    private File profile;
+
+    @Lob
+    private byte[] profile;
+
+    @Column(columnDefinition = "TEXT")
     private String introduce;
+
+    @Column(nullable = false, length = 255)
     private String email;
+
+    @Column(length = 255)
     private String stacks;
-    private String githubId;
-    // resume 추가
+
+    @Column(length = 255)
+    private String github_nickname;
+
+    @Column(length = 255)
     private String resume;
-
-    @JsonManagedReference(value = "user_invitation")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Invitation> invitations;
-
-    @JsonManagedReference(value = "user_member")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<ProjectMember> project_members;
-
-    @JsonManagedReference(value = "user_like")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<ProjectLike> project_likes;
-
-    @JsonManagedReference(value = "user_apply")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Apply> applys;
-
-    @JsonManagedReference(value = "user_resume")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Resume> resumes;
-
-//    @JsonManagedReference(value = "user_status")
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<Status> statuses;
-
 }
-

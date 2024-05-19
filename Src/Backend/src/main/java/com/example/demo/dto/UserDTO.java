@@ -1,12 +1,16 @@
 package com.example.demo.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class UserDTO {
-    String id;
-    String email;
-    String nickname;
+    private Long id;
+    private String nickname;
+    private String password;
+    private byte[] profile;
+    private String introduce;
+    private String email;
+    private String stacks;
+    private String githubNickname;
+    private String resume;
 }

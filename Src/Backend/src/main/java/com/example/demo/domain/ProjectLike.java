@@ -1,31 +1,21 @@
 package com.example.demo.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.*;
 import lombok.*;
 
-//import lombok.toString;
-import javax.persistence.*;
-
+@Data
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@Table(name = "project_like")
 public class ProjectLike {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonBackReference(value = "project_like")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @JsonBackReference(value = "user_like")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 }

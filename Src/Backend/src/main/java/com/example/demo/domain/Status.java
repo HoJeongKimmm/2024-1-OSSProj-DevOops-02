@@ -1,39 +1,27 @@
 package com.example.demo.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
-
+@Data
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@Table(name = "status")
 public class Status {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonBackReference(value = "project_status")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @JsonBackReference(value = "user_status")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public enum State {
-        APPLICATION,    // 신청
-        PENDING,        // 대기
-        APPROVED        // 승인
-    }
+    @Column(nullable = false, length = 255)
+    private String state;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private State state;
+    @Column(nullable = true, length = 255)
+    private String position;
 }
