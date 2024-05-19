@@ -15,7 +15,7 @@ import java.util.*;
 @Transactional
 @Service
 public class ProjectService {
-    ProjectRepository project_rp;
+    private ProjectRepository project_rp;
     ApplyRepository apply_rp;
     UserService userService;
 

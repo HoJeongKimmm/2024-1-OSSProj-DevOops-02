@@ -316,7 +316,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public <S extends Project, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        // 구현 오류
+
         return null;
     }
 }
