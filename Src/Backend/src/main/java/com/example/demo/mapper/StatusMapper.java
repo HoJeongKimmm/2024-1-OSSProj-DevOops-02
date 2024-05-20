@@ -3,11 +3,15 @@ package com.example.demo.mapper;
 import com.example.demo.domain.Status;
 import com.example.demo.dto.StatusDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StatusMapper {
-    StatusDTO statusToStatusDTO(Status status);
+    @Mapping(source = "projectId", target = "project.id")
+    @Mapping(source = "userId", target = "user.id")
     Status statusDTOToStatus(StatusDTO statusDTO);
-    void updateStatusFromDTO(StatusDTO statusDTO, @MappingTarget Status status);
+
+    @Mapping(source = "project.id", target = "projectId")
+    @Mapping(source = "user.id", target = "userId")
+    StatusDTO statusToStatusDTO(Status status);
 }
