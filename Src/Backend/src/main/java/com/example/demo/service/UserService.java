@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,4 +71,6 @@ public class UserService {
         // 프로젝트 ID로 사용자 목록을 가져오는 로직을 구현합니다.
         return null; // 실제 구현 필요
     }
+
+
 }
