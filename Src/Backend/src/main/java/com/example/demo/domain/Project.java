@@ -1,10 +1,8 @@
 package com.example.demo.domain;
 
-
 import javax.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -15,6 +13,10 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private Course projectClass;
+
     @Column(nullable = false, length = 255)
     private String title;
 
@@ -22,10 +24,10 @@ public class Project {
     private String content;
 
     @Column(nullable = false)
-    private Timestamp createdAt;
+    private Date createdAt;
 
     @Column(nullable = false)
-    private Timestamp updatedAt;
+    private Date updatedAt;
 
     @Column(nullable = true)
     private Date startDate;

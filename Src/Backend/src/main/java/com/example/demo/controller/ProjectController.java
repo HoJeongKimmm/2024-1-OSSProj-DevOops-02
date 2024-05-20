@@ -41,15 +41,4 @@ public class ProjectController {
     public void deleteProject(@PathVariable Long id) {
         projectService.deleteProject(id);
     }
-
-    // DB 연결 테스트용 엔드포인트
-    @GetMapping("/test")
-    public String testDBConnection() {
-        try {
-            boolean isConnected = projectService.testConnection();
-            return isConnected ? "DB 연결 성공" : "DB 연결 실패";
-        } catch (Exception e) {
-            return "DB 연결 실패: " + e.getMessage();
-        }
-    }
 }

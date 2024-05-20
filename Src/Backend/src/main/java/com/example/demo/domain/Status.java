@@ -1,7 +1,7 @@
 package com.example.demo.domain;
 
 import javax.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 @Data
 @Entity
@@ -12,16 +12,16 @@ public class Status {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "project_id")
+    @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private String state;
 
-    @Column(nullable = true, length = 255)
+    @Column(nullable = false)
     private String position;
 }
