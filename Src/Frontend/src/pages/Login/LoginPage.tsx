@@ -14,7 +14,7 @@ import {
   LogoTypo,
   Root,
 } from './styled'
-import { PostUserLoginResponseType, postuserLogin } from 'api/postUserLogin'
+// import { PostUserLoginResponseType, postuserLogin } from 'api/postUserLogin';
 
 type LoginPageProps = {
   className?: string
@@ -32,41 +32,34 @@ export const LoginPage: FC<LoginPageProps> = ({ className }) => {
 
   const onLoginAPI = () => {
     if (email.length === 0 || password.length === 0) {
-      return // alert 넣고 싶다..
+      // eslint-disable-next-line no-undef
+      alert('이메일과 비밀번호를 입력해주세요.') // 알림 추가
+      return
     }
-    const data = {
-      email: email,
-      password: password,
+
+    // Retrieve stored credentials from localStorage
+    // eslint-disable-next-line no-undef
+    const storedEmail = localStorage.getItem('email')
+    // eslint-disable-next-line no-undef
+    const storedPassword = localStorage.getItem('password')
+
+    // Check if entered credentials match stored credentials
+    if (email === storedEmail && password === storedPassword) {
+      // If they match, simulate a successful login
+      // eslint-disable-next-line no-undef
+      console.log('SUCCESS')
+      navigate('/')
+      // eslint-disable-next-line no-undef
+      localStorage.setItem('test_login', 'true')
+      // eslint-disable-next-line no-undef
+      alert('로그인에 성공했습니다.')
+    } else {
+      // If they don't match, show an error message
+      // eslint-disable-next-line no-undef
+      alert('로그인에 실패했습니다. 이메일 또는 비밀번호를 확인해주세요.')
+      setEmail('')
+      setPassword('')
     }
-    postuserLogin(`/user/login`, data)
-      .then((response: PostUserLoginResponseType) => {
-        if (response.status === 'SUCCESS') {
-          // eslint-disable-next-line no-undef
-          console.log('SUCCESS')
-          navigate('/')
-          // eslint-disable-next-line no-undef
-          localStorage.removeItem('test_login')
-          // eslint-disable-next-line no-undef
-          localStorage.setItem('test_login', 'true')
-          const userId = response.id
-          if (userId) {
-            // eslint-disable-next-line no-undef
-            localStorage.setItem('id', userId)
-            console.log('아이디입니다 : ' + userId.toString())
-          }
-        } else {
-          // eslint-disable-next-line no-undef
-          alert('로그인에 실패했습니다.')
-          setEmail('')
-          setPassword('')
-          // eslint-disable-next-line no-undef
-          console.log('Error message:', response.message)
-        }
-      })
-      .catch((error: any) => {
-        // eslint-disable-next-line no-undef
-        console.error('Error :', error)
-      })
   }
 
   const onKeyPressEnter = (e: any) => {
@@ -86,12 +79,13 @@ export const LoginPage: FC<LoginPageProps> = ({ className }) => {
         <LogoImg src={logoImg} alt={'로고 이미지'} />
         <LogoTypo>당신의 능력, 티밍에서 펼쳐보세요!</LogoTypo>
         <InputContainer>
-          <ContentInput placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+          <ContentInput placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
           <ContentInput
             placeholder="비밀번호"
             type="password"
             onKeyDown={onKeyPressEnter}
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
         </InputContainer>
         <LoginButton type="primary" onClick={onClickLogin}>
