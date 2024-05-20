@@ -73,8 +73,7 @@ public class UserService {
     public void updateResume(Long userId, String resume) {
         User user = getUserById(userId);
         if (user != null) {
-            user.setResume(resume);
-            userRepository.save(user);
+            userRepository.updateResume(resume, userId);
         } else {
             throw new RuntimeException("User not found");
         }
