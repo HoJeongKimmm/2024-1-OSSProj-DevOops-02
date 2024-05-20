@@ -1,9 +1,10 @@
 package com.example.demo.domain;
 
-import javax.persistence.*;
-import lombok.*;
 
-import java.security.Timestamp;
+import javax.persistence.*;
+import lombok.Data;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -13,10 +14,6 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Course projectClass;
 
     @Column(nullable = false, length = 255)
     private String title;
