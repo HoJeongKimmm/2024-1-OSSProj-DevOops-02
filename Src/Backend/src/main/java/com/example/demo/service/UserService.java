@@ -63,11 +63,11 @@ public class UserService {
     }
 
     public void logoutUser(Long userId) {
-        // 로그아웃 관련 로직을 구현합니다. 예: 세션 무효화
+        // 로그아웃 관련 로직을 구현
     }
 
     public List<UserDTO> getUsersByProjectId(Long projectId) {
-        // 프로젝트 ID로 사용자 목록을 가져오는 로직을 구현합니다.
+        // 프로젝트 ID로 사용자 목록을 가져오는 로직을 구현
         return null; // 실제 구현 필요
     }
 }
