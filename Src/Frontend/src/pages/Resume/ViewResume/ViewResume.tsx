@@ -129,7 +129,6 @@ export const ViewResume: FC<ProjectListPageProps> = ({ className }) => {
           <Viewer
             initialValue="# 이력서
           자기자신을 한줄로 소개해주세요 !
-         
           ### 학력
           - ㅇㅇ고등학교 (2013~2016)
           - 동국대학교 통계학과 (2016~2020)
