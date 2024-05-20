@@ -3,7 +3,7 @@ import Avatar from 'assets/images/missing_avatar.png'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-  BellIcon,
+  // BellIcon,
   Container,
   JoinButton,
   LoginButton,
@@ -18,7 +18,7 @@ import {
   UserContainer,
   UserIcon,
 } from './styled'
-import { PostUserLogoutResponseType, postuserLogout } from 'api/postUserLogout'
+// import { PostUserLogoutResponseType, postuserLogout } from 'api/postUserLogout'
 
 type CommonHeaderProps = {
   className?: string
@@ -40,9 +40,9 @@ export const CommonHeader: FC<CommonHeaderProps> = ({ className }) => {
     navigate('/user/project/create')
   }
 
-  const onClickNoticeListButton = () => {
-    navigate('/user/notice/list')
-  }
+  // const onClickNoticeListButton = () => {
+  //   navigate('/user/notice/list')
+  // }
   const onClickLoginButton = () => {
     navigate('/login')
   }
@@ -55,37 +55,58 @@ export const CommonHeader: FC<CommonHeaderProps> = ({ className }) => {
   const onClickMyPageButton = () => {
     navigate('/user/profile')
   }
+  // const onClickLogoutButton = () => {
+  //   // eslint-disable-next-line no-undef
+  //   postuserLogout('/user/logout')
+  //     .then((response: PostUserLogoutResponseType) => {
+  //       if (response.status === 'SUCCESS') {
+  //         // eslint-disable-next-line no-undef
+  //         console.log('SUCCESS')
+  //         // eslint-disable-next-line no-undef
+  //         localStorage.setItem('test_login', 'false')
+  //         // eslint-disable-next-line no-undef
+  //         localStorage.removeItem('id')
+  //         // eslint-disable-next-line no-undef
+  //         window.location.reload()
+  //       } else {
+  //         // eslint-disable-next-line no-undef
+  //         alert('로그아웃에 실패했습니다.')
+  //         // eslint-disable-next-line no-undef
+  //         console.log('Error message:', response.message)
+  //       }
+  //     })
+  //     .catch((error: any) => {
+  //       // eslint-disable-next-line no-undef
+  //       console.error('Error :', error)
+  //     })
+  // }
   const onClickLogoutButton = () => {
     // eslint-disable-next-line no-undef
-    postuserLogout('/user/logout')
-      .then((response: PostUserLogoutResponseType) => {
-        if (response.status === 'SUCCESS') {
-          // eslint-disable-next-line no-undef
-          console.log('SUCCESS')
-          // eslint-disable-next-line no-undef
-          localStorage.removeItem('test_login')
-          localStorage.removeItem('id')
-          // eslint-disable-next-line no-undef
-          window.location.reload()
-        } else {
-          // eslint-disable-next-line no-undef
-          alert('로그아웃에 실패했습니다.')
-          // eslint-disable-next-line no-undef
-          console.log('Error message:', response.message)
-        }
-      })
-      .catch((error: any) => {
-        // eslint-disable-next-line no-undef
-        console.error('Error :', error)
-      })
+    if (localStorage.getItem('test_login') === 'true') {
+      navigate('/')
+      // eslint-disable-next-line no-undef
+      console.log('SUCCESS')
+      // eslint-disable-next-line no-undef
+      localStorage.setItem('test_login', 'false')
+      // eslint-disable-next-line no-undef
+      localStorage.removeItem('id')
+      // eslint-disable-next-line no-undef
+      window.location.reload()
+    } else {
+      // eslint-disable-next-line no-undef
+      alert('로그아웃에 실패했습니다.')
+      // eslint-disable-next-line no-undef
+      console.log('Error message:')
+    }
   }
   const renderUserContainer = () => {
     // eslint-disable-next-line no-undef
 
+    // eslint-disable-next-line no-undef
     if (localStorage.getItem('test_login') === 'true') {
       return (
         <UserContainer>
-          <BellIcon onClick={onClickNoticeListButton} />
+          {/* <BellIcon onClick={onClickNoticeListButton} /> */}
           <MyPageButton onClick={onClickMyPageButton}>마이페이지</MyPageButton>
           <LogoutButton onClick={onClickLogoutButton}>로그아웃</LogoutButton>
           <UserIcon src={Avatar} alt={'유저 아바타 이미지'} />

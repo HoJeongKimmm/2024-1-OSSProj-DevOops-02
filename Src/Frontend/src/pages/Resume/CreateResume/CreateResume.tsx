@@ -25,6 +25,9 @@ import bannerBackgroundImg from 'assets/images/main/banner_background2.png'
 import '@toast-ui/editor/dist/toastui-editor.css'
 import { Editor } from '@toast-ui/react-editor'
 import { ProjectCreateButton } from 'pages/User/Project/Create/styled'
+import { UserInfoType } from 'types/class'
+import userListSampleJson from 'constants/json/user_list_sample.json'
+import { useParams } from 'react-router-dom' // 추가된 부분
 
 type ProjectListPageProps = {
   className?: string
@@ -42,6 +45,10 @@ export const CreateResume: FC<ProjectListPageProps> = ({ className }) => {
   const [projectTypeSelect, setProjectTypeSelect] = useState('')
   const [stackTypeSelect, setStackTypeSelect] = useState('')
   const [locationTypeSelect, setLocationTypeSelect] = useState('')
+  const userListData: UserInfoType[] = camelizeKey(userListSampleJson.user_list) as UserInfoType[]
+
+  let { userid } = useParams() // user_id 값을 문자열로 받아옴
+  const user_id2 = userid ? parseInt(userid) : 0 // user_id를 숫자로 변환
 
   useEffect(() => {
     getProjectList()
@@ -66,6 +73,8 @@ export const CreateResume: FC<ProjectListPageProps> = ({ className }) => {
       projectItem.requireMemberList.some((member) => member.developmentStack.toLowerCase().includes(stackTypeSelect)) &&
       (locationTypeSelect === '' || projectItem.location === parseInt(locationTypeSelect))
   )
+
+  const userResume = userListData[user_id2].resume // 임시로 첫번째 유저의 이력서를 보여주기 위해 사용
 
   const renderProjectListDongguk = () => {
     return (
@@ -95,10 +104,23 @@ export const CreateResume: FC<ProjectListPageProps> = ({ className }) => {
     setLocationTypeSelect(option)
   }
 
-  return (
-    <Root className={className}>
-      <CommonHeader />
-      {/* <BannerImg src={bannerBackgroundImg} alt={'배너 배경 이미지'} /> */}
+  const renderCreateResumePage = () => {
+    // eslint-disable-next-line no-undef
+    if (localStorage.getItem('test_login') === 'true') {
+      return (
+        <Container>
+          <Editor
+            initialValue={userResume}
+            // 초기 입력 문구
+            previewStyle="vertical" // 프리뷰 스타일 ['tab', 'vertical']
+            height="500px" // 에디터 높이값
+            initialEditType="markdown" // 페이지 로드 시 기본 에디터 타입
+          />
+        </Container>
+      )
+    }
+
+    return (
       <Container>
         <Editor
           initialValue="# 이력서
@@ -124,6 +146,14 @@ export const CreateResume: FC<ProjectListPageProps> = ({ className }) => {
           initialEditType="markdown" // 페이지 로드 시 기본 에디터 타입
         />
       </Container>
+    )
+  }
+
+  return (
+    <Root className={className}>
+      <CommonHeader />
+      {/* <BannerImg src={bannerBackgroundImg} alt={'배너 배경 이미지'} /> */}
+      {renderCreateResumePage()}
       <ButtonContainer>
         <ProjectCreateButton>저장하기</ProjectCreateButton>
       </ButtonContainer>
