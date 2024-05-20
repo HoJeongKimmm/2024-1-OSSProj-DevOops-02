@@ -32,24 +32,8 @@ public class ProjectLikeController {
         return projectLikeService.createProjectLike(projectLikeDTO);
     }
 
-    @PutMapping("/{id}")
-    public ProjectLikeDTO updateProjectLike(@PathVariable Long id, @RequestBody ProjectLikeDTO projectLikeDTO) {
-        return projectLikeService.updateProjectLike(id, projectLikeDTO);
-    }
-
     @DeleteMapping("/{id}")
     public void deleteProjectLike(@PathVariable Long id) {
         projectLikeService.deleteProjectLike(id);
-    }
-
-    // DB 연결 테스트용 엔드포인트
-    @GetMapping("/test")
-    public String testDBConnection() {
-        try {
-            boolean isConnected = projectLikeService.testConnection();
-            return isConnected ? "DB 연결 성공" : "DB 연결 실패";
-        } catch (Exception e) {
-            return "DB 연결 실패: " + e.getMessage();
-        }
     }
 }

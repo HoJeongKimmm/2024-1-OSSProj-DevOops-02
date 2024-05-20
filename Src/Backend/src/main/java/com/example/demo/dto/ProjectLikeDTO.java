@@ -7,4 +7,5 @@ public class ProjectLikeDTO {
     private Long id;
     private Long projectId;
     private Long userId;
+    private boolean state;
 }

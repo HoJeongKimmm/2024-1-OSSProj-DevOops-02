@@ -36,24 +36,12 @@ public class ProjectLikeService {
     }
 
     public ProjectLikeDTO createProjectLike(ProjectLikeDTO projectLikeDTO) {
-        ProjectLike projectLike = projectLikeMapper.projectLikeDTOToProject(projectLikeDTO);
+        ProjectLike projectLike = projectLikeMapper.projectLikeDTOToProjectLike(projectLikeDTO);
         projectLike = projectLikeRepository.save(projectLike);
         return projectLikeMapper.projectLikeToProjectLikeDTO(projectLike);
     }
 
-    public ProjectLikeDTO updateProjectLike(Long id, ProjectLikeDTO projectLikeDTO) {
-        ProjectLike existingProjectLike = projectLikeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("ProjectLike not found"));
-        projectLikeMapper.updateProjectLikeFromDTO(projectLikeDTO, existingProjectLike);
-        existingProjectLike = projectLikeRepository.save(existingProjectLike);
-        return projectLikeMapper.projectLikeToProjectLikeDTO(existingProjectLike);
-    }
-
     public void deleteProjectLike(Long id) {
         projectLikeRepository.deleteById(id);
-    }
-
-    public boolean testConnection() {
-        return projectLikeRepository.count() >= 0; // 그냥 연결 확인용으로 count 쿼리 사용
     }
 }
