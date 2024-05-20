@@ -29,7 +29,7 @@ public class CourseController {
         return ResponseEntity.ok(courseService.createCourse(courseDto));
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<CourseDTO> updateCourse(@PathVariable Long id, @RequestBody CourseDTO courseDto) {
         courseDto.setId(id);
         return ResponseEntity.ok(courseService.updateCourse(courseDto));
