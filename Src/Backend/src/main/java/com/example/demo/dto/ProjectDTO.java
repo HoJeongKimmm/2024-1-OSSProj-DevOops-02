@@ -7,8 +7,11 @@ import java.util.Date;
 @Data
 public class ProjectDTO {
     private Long id;
+    private Long classId;
     private String title;
     private String content;
+    private Date createdAt;
+    private Date updatedAt;
     private Date startDate;
     private Date endDate;
     private boolean isAvailable;
