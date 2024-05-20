@@ -1,7 +1,7 @@
 package com.example.demo.domain;
 
 import javax.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 @Data
 @Entity
@@ -15,7 +15,6 @@ public class ProjectLike {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(nullable = false)
+    private Long userId;
 }

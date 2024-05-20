@@ -1,14 +1,15 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ProjectLikeDTO;
 import com.example.demo.service.ProjectLikeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/project-likes")
 public class ProjectLikeController {
-
     private final ProjectLikeService projectLikeService;
 
     @Autowired
@@ -16,31 +17,39 @@ public class ProjectLikeController {
         this.projectLikeService = projectLikeService;
     }
 
-    @PostMapping("/{projectId}/like")
-    public ResponseEntity<Void> likeProject(@RequestParam Long userId, @PathVariable Long projectId) {
-        if (projectLikeService.likeProject(userId, projectId)) {
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.status(409).build(); // Conflict: 이미 좋아요 한 경우
+    @GetMapping
+    public List<ProjectLikeDTO> getAllProjectLikes() {
+        return projectLikeService.getAllProjectLikes();
+    }
+
+    @GetMapping("/{id}")
+    public ProjectLikeDTO getProjectLikeById(@PathVariable Long id) {
+        return projectLikeService.getProjectLikeById(id);
+    }
+
+    @PostMapping
+    public ProjectLikeDTO createProjectLike(@RequestBody ProjectLikeDTO projectLikeDTO) {
+        return projectLikeService.createProjectLike(projectLikeDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ProjectLikeDTO updateProjectLike(@PathVariable Long id, @RequestBody ProjectLikeDTO projectLikeDTO) {
+        return projectLikeService.updateProjectLike(id, projectLikeDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProjectLike(@PathVariable Long id) {
+        projectLikeService.deleteProjectLike(id);
+    }
+
+    // DB 연결 테스트용 엔드포인트
+    @GetMapping("/test")
+    public String testDBConnection() {
+        try {
+            boolean isConnected = projectLikeService.testConnection();
+            return isConnected ? "DB 연결 성공" : "DB 연결 실패";
+        } catch (Exception e) {
+            return "DB 연결 실패: " + e.getMessage();
         }
-    }
-
-    @DeleteMapping("/{projectId}/unlike")
-    public ResponseEntity<Void> unlikeProject(@RequestParam Long userId, @PathVariable Long projectId) {
-        if (projectLikeService.unlikeProject(userId, projectId)) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build(); // 좋아요가 없는 경우
-        }
-    }
-
-    @GetMapping("/{projectId}/count")
-    public ResponseEntity<Long> countLikes(@PathVariable Long projectId) {
-        return ResponseEntity.ok(projectLikeService.countLikesByProjectId(projectId));
-    }
-
-    @GetMapping("/{projectId}/is-liked")
-    public ResponseEntity<Boolean> isUserLikedProject(@RequestParam Long userId, @PathVariable Long projectId) {
-        return ResponseEntity.ok(projectLikeService.hasUserLikedProject(userId, projectId));
     }
 }
