@@ -1,7 +1,7 @@
 package com.example.demo.domain;
 
 import javax.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Entity
@@ -20,18 +20,12 @@ public class User {
     @Lob
     private byte[] profile;
 
-    @Column(columnDefinition = "TEXT")
     private String introduce;
 
     @Column(nullable = false, length = 255)
     private String email;
 
-    @Column(length = 255)
     private String stacks;
-
-    @Column(length = 255)
     private String github_nickname;
-
-    @Column(length = 255)
     private String resume;
 }

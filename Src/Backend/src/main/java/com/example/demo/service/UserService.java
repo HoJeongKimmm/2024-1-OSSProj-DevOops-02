@@ -23,10 +23,10 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public UserDTO getUserById(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        return userMapper.userToUserDTO(user);
+    public List<UserDTO> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(userMapper::userToUserDTO)
+                .collect(Collectors.toList());
     }
 
     public UserDTO createUser(UserDTO userDto) {
@@ -35,39 +35,19 @@ public class UserService {
         return userMapper.userToUserDTO(user);
     }
 
-    public UserDTO updateUser(UserDTO userDto) {
-        User existingUser = userRepository.findById(userDto.getId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        userMapper.updateUserFromDTO(userDto, existingUser);
-        existingUser = userRepository.save(existingUser);
-        return userMapper.userToUserDTO(existingUser);
-    }
-
-    public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
-    }
-
-    public List<UserDTO> getAllUsers() {
-        return userRepository.findAll().stream()
-                .map(userMapper::userToUserDTO)
-                .collect(Collectors.toList());
-    }
-
     public UserDTO loginUser(String email, String password) {
         User user = userRepository.findByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
             return userMapper.userToUserDTO(user);
         } else {
-            throw new RuntimeException("Invalid email or password");
+            return null;
         }
     }
-
-    public void logoutUser(Long userId) {
-        // 로그아웃 관련 로직을 구현
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
-    public List<UserDTO> getUsersByProjectId(Long projectId) {
-        // 프로젝트 ID로 사용자 목록을 가져오는 로직을 구현
-        return null; // 실제 구현 필요
+    public boolean testConnection() {
+        return userRepository.count() >= 0; // 그냥 연결 확인용으로 count 쿼리 사용
     }
 }
