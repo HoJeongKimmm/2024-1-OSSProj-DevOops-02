@@ -5,15 +5,14 @@ import com.example.demo.dto.UserDTO;
 import com.example.demo.service.UserService;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-
     private final UserService userService;
 
     @Autowired
@@ -21,40 +20,42 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/all")
+    public List<UserDTO> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
     @PostMapping("/join")
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDto) {
-        UserDTO createdUser = userService.createUser(userDto);
-        return ResponseEntity.status(201).body(createdUser);
+    public UserDTO joinUser(@RequestBody UserDTO userDto) {
+        return userService.createUser(userDto);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserDTO> loginUser(@RequestBody UserDTO userDto) {
+    public String loginUser(@RequestBody UserDTO userDto, HttpSession session) {
         UserDTO loggedInUser = userService.loginUser(userDto.getEmail(), userDto.getPassword());
-        return ResponseEntity.ok(loggedInUser);
+        if (loggedInUser != null) {
+            session.setAttribute("user", loggedInUser);
+            return "Login successful!";
+        } else {
+            return "Invalid email or password.";
+        }
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<Void> logoutUser(@RequestParam Long userId) {
-        userService.logoutUser(userId);
-        return ResponseEntity.noContent().build();
+    @GetMapping("/logout")
+    public String logoutUser(HttpSession session) {
+        session.invalidate();
+        return "Logout successful!";
     }
 
-    @GetMapping("/info")
-    public ResponseEntity<UserDTO> getUserById(@RequestParam Long id) {
-        UserDTO userDTO = userService.getUserById(id);
-        return ResponseEntity.ok(userDTO);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<UserDTO>> getAllUsers() {
-        List<UserDTO> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
-    }
-
-    @GetMapping("/project/manage/list")
-    public ResponseEntity<List<UserDTO>> getUsersByProjectId(@RequestParam Long projectId) {
-        List<UserDTO> users = userService.getUsersByProjectId(projectId);
-        return ResponseEntity.ok(users);
+    // DB 연결 테스트용 엔드포인트
+    @GetMapping("/test")
+    public String testDBConnection() {
+        try {
+            boolean isConnected = userService.testConnection();
+            return isConnected ? "DB 연결 성공" : "DB 연결 실패";
+        } catch (Exception e) {
+            return "DB 연결 실패: " + e.getMessage();
+        }
     }
 
 
