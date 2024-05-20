@@ -21,6 +21,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'styles/global.css'
 import { ProjectDetailsDonggukPage } from 'pages/Project/DetailsDongguk'
 import { ViewResume } from 'pages/Resume/ViewResume'
+import { CompetitionUserProjectManagePage } from 'pages/User/Project/Manage copy'
 
 // eslint-disable-next-line no-undef
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
@@ -42,6 +43,10 @@ root.render(
           {/* <Route path="/user/project" element={<UserProjectPage />} /> */}
           <Route path="/user/project/create" element={<UserProjectCreatePage />} />
           <Route path="/user/project/manage/:projectKey/:projectTitle" element={<UserProjectManagePage />} />
+          <Route
+            path="/user/competition/manage/:projectKey/:projectTitle"
+            element={<CompetitionUserProjectManagePage />}
+          />
           <Route path="/project/list" element={<ProjectListPage />} />
           <Route path="/project/listDongguk" element={<ProjectListPageDongguk />} />
           <Route path="/project/:projectKey" element={<ProjectDetailsPage />} />

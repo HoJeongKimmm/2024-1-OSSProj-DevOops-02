@@ -8,7 +8,7 @@ import { ProjectItemType, ProjectListType } from 'types/project'
 import { camelizeKey } from 'utils/camelizeKey'
 import { generateRandomProjectCardLogoImg } from 'utils/generateRandomProjectCardLogoImg'
 import { getDevelopmentStackColor, translateDevelopmentStack } from 'utils/translateDevelopmentStack'
-import { HeartOutlined, HeartFilled } from '@ant-design/icons'
+// import { HeartOutlined, HeartFilled } from '@ant-design/icons'
 // import { translateProjectPosition } from 'utils/translatePosition'
 import {
   BannerImg,
@@ -21,7 +21,7 @@ import {
   MenuContainer,
   MenuCountContainer,
   MenuCountDivider,
-  MenuCountLikeTypo,
+  // MenuCountLikeTypo,
   MenuCountVisitedTypo,
   MenuLeaderUserInfoContainer,
   MenuLeaderUserInfoNameTypo,
@@ -39,13 +39,13 @@ import {
   SideSectionProjectTypeContainer,
   SideSectionProjectTypeTitleTypo,
   SideSectionProjectTypeTypo,
-  SideSectionRequireMemberContainer,
-  SideSectionRequireMemberContentContainer,
-  SideSectionRequireMemberItemContainer,
-  SideSectionRequireMemberItemTypo,
-  SideSectionRequireMemberTitleTypo,
+  // SideSectionRequireMemberContainer,
+  // SideSectionRequireMemberContentContainer,
+  // SideSectionRequireMemberItemContainer,
+  // SideSectionRequireMemberItemTypo,
+  // SideSectionRequireMemberTitleTypo,
   TitleTypo,
-  LikeButton,
+  // LikeButton,
 } from './styled'
 import { GetProjectDetailsRequestType, GetProjectDetailsResponseType, getProjectDetails } from 'api/getProjectDetails'
 
@@ -61,14 +61,14 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
 
   const [projectItem, setProjectItem] = useState<ProjectItemType>()
 
-  const [liked, setLiked] = useState(false)
+  // const [liked, setLiked] = useState(false)
 
-  const handleLikeToggle = () => {
-    setLiked((prevLiked) => !prevLiked)
-  }
+  // const handleLikeToggle = () => {
+  //   setLiked((prevLiked) => !prevLiked)
+  // }
 
   const onClickProjectManage = (projectTitle: string) => {
-    navigate(`/user/project/manage/${projectKey}/${projectTitle}`)
+    navigate(`/user/competition/manage/${projectKey}/${projectTitle}`)
   }
 
   const onClickApplyProject = () => {
@@ -167,8 +167,8 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
               <MenuCountContainer>
                 <MenuCountVisitedTypo>조회수: {projectItem.visitedNumber}회</MenuCountVisitedTypo>
                 <MenuCountDivider />
-                <MenuCountLikeTypo>좋아요: {projectItem.likeNumber}회</MenuCountLikeTypo>
-                <LikeButton onClick={handleLikeToggle}>{liked ? <HeartFilled /> : <HeartOutlined />}</LikeButton>
+                {/* <MenuCountLikeTypo>좋아요: {projectItem.likeNumber}회</MenuCountLikeTypo> */}
+                {/* <LikeButton onClick={handleLikeToggle}>{liked ? <HeartFilled /> : <HeartOutlined />}</LikeButton> */}
               </MenuCountContainer>
             </MenuContainer>
             <ContentContainer>
@@ -210,7 +210,7 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
                 alt={'프로젝트 대표 이미지'}
               />
             </SideSectionProfileImgWrapper>
-            <SideSectionRequireMemberContainer>
+            {/* <SideSectionRequireMemberContainer>
               <SideSectionRequireMemberTitleTypo>모집 인원</SideSectionRequireMemberTitleTypo>
               <SideSectionRequireMemberContentContainer>
                 {projectItem.requireMemberList.map((requireMemberItem, index) => (
@@ -222,7 +222,7 @@ export const ProjectDetailsPage: FC<ProjectDetailsPageProps> = ({ className }) =
                   </SideSectionRequireMemberItemContainer>
                 ))}
               </SideSectionRequireMemberContentContainer>
-            </SideSectionRequireMemberContainer>
+            </SideSectionRequireMemberContainer> */}
             <SideSectionDateRangeContainer>
               <SideSectionDateRangeTitleTypo>프로젝트 기간</SideSectionDateRangeTitleTypo>
               <SideSectionDateRangeTypo>

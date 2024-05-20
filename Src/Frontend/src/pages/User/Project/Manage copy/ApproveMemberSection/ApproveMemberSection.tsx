@@ -6,14 +6,14 @@ import { Button, List, Space } from 'antd'
 import { camelizeKey } from 'utils/camelizeKey'
 import { UserInfoListType } from 'types/project'
 
-type ApproveMemberSectionProps = {
+type CompetitionApproveMemberSectionProps = {
   className?: string
 }
 
 const userListData = camelizeKey(userListSampleJson.user_list) as UserInfoListType
 
 // 여기에 들어갈 json 데이터 정의 필요!
-export const ApproveMemberSection: FC<ApproveMemberSectionProps> = ({ className }) => {
+export const CompetitionApproveMemberSection: FC<CompetitionApproveMemberSectionProps> = ({ className }) => {
   const filteredUserListData = userListData.filter(
     (userItem) => userItem.userId++ && userItem.nickname.toLowerCase() && userItem.developmentStackList
   )
