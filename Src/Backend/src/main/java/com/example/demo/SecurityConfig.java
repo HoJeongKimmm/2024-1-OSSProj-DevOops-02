@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -22,11 +23,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final LoginService loginService;
-
-    public SecurityConfig(@Lazy LoginService loginService) {
-        this.loginService = loginService;
-    }
+    @Autowired
+    private LoginService loginService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -41,12 +39,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=true")
                 .userInfoEndpoint()
                 .userService(loginService);
-    }
-
-    @Bean
-    public OAuth2AuthorizedClientManager authorizedClientManager(
-            ClientRegistrationRepository clientRegistrationRepository,
-            OAuth2AuthorizedClientService authorizedClientService) {
-        return new DefaultOAuth2AuthorizedClientManager(clientRegistrationRepository, (OAuth2AuthorizedClientRepository) authorizedClientService);
     }
 }
