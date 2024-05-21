@@ -125,7 +125,7 @@ export const JoinPage: FC<JoinPageProps> = ({ className }) => {
       <CommonHeader />
       <Container>
         <LogoImg src={logoImg} alt={'로고 이미지'} />
-        <LogoTypo>당신의 능력, 티밍에서 펼쳐보세요!</LogoTypo>
+        <LogoTypo>당신의 능력, 팀이지에서 펼쳐보세요!</LogoTypo>
         <InputContainer>
           <ContentInput placeholder="이메일" onChange={(e) => setEmail(e.target.value)} />
           <ContentInput type="password" placeholder="비밀번호" onChange={(e) => setPassword(e.target.value)} />
