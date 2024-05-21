@@ -36,18 +36,18 @@ export const UserInfo = styled.div`
 `
 
 export const UserNicknameTypo = styled(Typography)`
-  font-size: 18px;
+  font-size: 26px;
   font-weight: bold;
 `
 export const UserIntroductionTypo = styled(Typography)`
   color: #303030;
-  margin-top: 10px;
   margin-left: 10px;
   font-size: 14px;
 `
 export const DevelopmentStackTagContainer = styled(Space)`
-  height: 50px;
+  height: 36px;
   display: flex;
+  margin-left: 10px;
   align-items: center;
   flex-wrap: wrap;
 `

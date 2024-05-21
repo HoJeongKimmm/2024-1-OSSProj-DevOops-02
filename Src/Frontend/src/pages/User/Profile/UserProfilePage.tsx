@@ -16,12 +16,12 @@ import {
   ApplyContainer,
   ApplyTitleTypo,
   Container,
-  LikeCardContainer,
-  LikeContainer,
-  LikeTitleTypo,
-  ExpireProjectCardContainer,
-  ExpireContainer,
-  ExpireTitleTypo,
+  // LikeCardContainer,
+  // LikeContainer,
+  // LikeTitleTypo,
+  // ExpireProjectCardContainer,
+  // ExpireContainer,
+  // ExpireTitleTypo,
   Root,
 } from './styled'
 import { ProfileHeader } from './profileHeader'
@@ -34,36 +34,33 @@ type UserProfilePageProps = {
 export const UserProfilePage: FC<UserProfilePageProps> = ({ className }) => {
   useEffect(() => {
     getUserprojectList()
-    .then((response: GetUserprojectListResponseType) => {
-      if (response.status === 'SUCCESS') {
+      .then((response: GetUserprojectListResponseType) => {
+        if (response.status === 'SUCCESS') {
+          // eslint-disable-next-line no-undef
+          console.log('SUCCESS')
+          // 데이터 가져오기
+        } else {
+          // eslint-disable-next-line no-undef
+          console.log('FAIL')
+          // eslint-disable-next-line no-undef
+          console.log('Error message:', response.message)
+        }
+      })
+      .catch((error: any) => {
         // eslint-disable-next-line no-undef
-        console.log('SUCCESS');
-        // 데이터 가져오기
-      } else {
-        // eslint-disable-next-line no-undef
-        console.log('FAIL');
-        // eslint-disable-next-line no-undef
-        console.log('Error message:', response.message);
-      }
-    })
-    .catch((error: any) => {
-      // eslint-disable-next-line no-undef
-      console.error('Error :', error);
-    });
+        console.error('Error :', error)
+      })
   }, [])
-
-
 
   const projectListData = camelizeKey(projectListSampleJson.project_list) as ProjectListType
   const applyProjectListData = camelizeKey(applyProjectListSampleJson.project_list) as ApplyProjectListType
   const MyProjectListData = projectListData.filter(
-    (projectItem) =>
-    projectItem.position === ('LEADER') || projectItem.position === ('MEMBER')
+    (projectItem) => projectItem.position === 'LEADER' || projectItem.position === 'MEMBER'
   )
-  const ExpiredProjectListData = projectListData.filter(
-    (projectItem) =>
-    projectItem.valid === ('EXPIRED')
-  )
+  // const ExpiredProjectListData = projectListData.filter(
+  //   (projectItem) =>
+  //   projectItem.valid === ('EXPIRED')
+  // )
   return (
     <Root className={className}>
       <ProfileHeader />
@@ -93,7 +90,7 @@ export const UserProfilePage: FC<UserProfilePageProps> = ({ className }) => {
             ))}
           </ApplyCardContainer>
         </ApplyContainer>
-        <LikeContainer>
+        {/* <LikeContainer>
           <LikeTitleTypo>내가 좋아요 표시한 프로젝트</LikeTitleTypo>
           <LikeCardContainer>
             {projectListData
@@ -103,8 +100,8 @@ export const UserProfilePage: FC<UserProfilePageProps> = ({ className }) => {
                 <ProjectCard projectItem={projectItem} key={`project_card_${projectItem.key}`} />
               ))}
           </LikeCardContainer>
-        </LikeContainer>
-        <ExpireContainer>
+        </LikeContainer> */}
+        {/* <ExpireContainer>
           <ExpireTitleTypo>마감된 프로젝트</ExpireTitleTypo>
           <ExpireProjectCardContainer>
             {ExpiredProjectListData.map((projectItem) => (
@@ -114,7 +111,7 @@ export const UserProfilePage: FC<UserProfilePageProps> = ({ className }) => {
               />
             ))}
           </ExpireProjectCardContainer>
-        </ExpireContainer>
+        </ExpireContainer> */}
       </Container>
     </Root>
   )
