@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.LoginDTO;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
