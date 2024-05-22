@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "project_like")
-public class ProjectLike {
+@Table(name = "status")
+public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,5 +20,8 @@ public class ProjectLike {
     private User user;
 
     @Column(nullable = false)
-    private boolean state;
+    private String state;
+
+    @Column(nullable = false)
+    private String position;
 }

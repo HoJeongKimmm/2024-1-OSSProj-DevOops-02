@@ -1,49 +1,31 @@
 package com.example.demo.domain;
 
-import com.example.demo.domain.stacks.NodeJs;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import javax.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
-import java.io.File;
-import java.util.List;
-
+@Data
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "user")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 255)
     private String nickname;
+
+    @Column(nullable = false, length = 255)
     private String password;
-    private File profile;
+
+    @Lob
+    private byte[] profile;
+
     private String introduce;
+
+    @Column(nullable = false, length = 255)
     private String email;
+
     private String stacks;
-    private String githubId;
-
-    @JsonManagedReference(value = "user_invitation")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Invitation> invitations;
-
-    @JsonManagedReference(value = "user_member")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<ProjectMember> project_members;
-
-    @JsonManagedReference(value = "user_like")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<ProjectLike> project_likes;
-
-    @JsonManagedReference(value = "user_apply")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Apply> applys;
-
-
+    private String github_nickname;
+    private String resume;
 }
-

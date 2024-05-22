@@ -1,36 +1,47 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Project;
-import com.example.demo.domain.User;
+import com.example.demo.domain.ProjectLike;
+import com.example.demo.dto.ProjectLikeDTO;
+import com.example.demo.mapper.ProjectLikeMapper;
 import com.example.demo.repository.ProjectLikeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Transactional
 @Service
+@Transactional
 public class ProjectLikeService {
-    ProjectLikeRepository projectLike_rp;
-    UserService userService;
-    ProjectService projectService;
-    ProjectLikeService projectLikeService;
+    private final ProjectLikeRepository projectLikeRepository;
+    private final ProjectLikeMapper projectLikeMapper;
 
-    public ProjectLikeService(ProjectLikeRepository projectLikeRepository){
-        projectLike_rp = projectLikeRepository;
+    @Autowired
+    public ProjectLikeService(ProjectLikeRepository projectLikeRepository, ProjectLikeMapper projectLikeMapper) {
+        this.projectLikeRepository = projectLikeRepository;
+        this.projectLikeMapper = projectLikeMapper;
     }
 
-    public void projectLike(HttpServletRequest request, int projectId){
-        String user_id = userService.findSessionId(request);
-        User user = userService.findUserInfo(user_id);
-        Project project = projectService.findByProjectId(projectId);
-        projectLike_rp.insert(project, user);
+    public List<ProjectLikeDTO> getAllProjectLikes() {
+        return projectLikeRepository.findAll().stream()
+                .map(projectLikeMapper::projectLikeToProjectLikeDTO)
+                .collect(Collectors.toList());
     }
 
+    public ProjectLikeDTO getProjectLikeById(Long id) {
+        ProjectLike projectLike = projectLikeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("ProjectLike not found"));
+        return projectLikeMapper.projectLikeToProjectLikeDTO(projectLike);
+    }
 
-    public List<Project> findLikedProjects(String user_id) {
-        List<Project> project = projectLikeService.findLikedProjects(user_id);
-        return null;
+    public ProjectLikeDTO createProjectLike(ProjectLikeDTO projectLikeDTO) {
+        ProjectLike projectLike = projectLikeMapper.projectLikeDTOToProjectLike(projectLikeDTO);
+        projectLike = projectLikeRepository.save(projectLike);
+        return projectLikeMapper.projectLikeToProjectLikeDTO(projectLike);
+    }
+
+    public void deleteProjectLike(Long id) {
+        projectLikeRepository.deleteById(id);
     }
 }
