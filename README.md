@@ -9,7 +9,7 @@
 | 팀원 | 김호정 | 프론트엔드 개발   | 경영정보학과     | 융합소프트웨어 | 2020111556@dgu.ac.kr | 
 
 
-<p>본 프로젝트는 < <a>https://github.com/CSID-DGU/2023-1-OSSP1-colorful-7?tab=readme-ov-file</a>>프로젝트를 develop한 프로젝트입니다. 프론트 개발 디자인과 코드 스타일을 차용하였습니다.</p>
+<p>* 본 프로젝트는 < <a>https://github.com/CSID-DGU/2023-1-OSSP1-colorful-7?tab=readme-ov-file</a>>프로젝트를 develop한 프로젝트입니다. 프론트 개발 디자인과 코드 스타일을 차용하였습니다.</p>
 
 
 ---
