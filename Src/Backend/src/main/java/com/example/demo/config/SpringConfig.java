@@ -1,9 +1,11 @@
-package com.example.demo;
+package com.example.demo.config;
 
+import com.example.demo.domain.User;
 import com.example.demo.mapper.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.*;
 import org.mapstruct.factory.Mappers;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,8 +13,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = {"com.example.demo"})
+@ComponentScan(basePackages = "com.example.demo")
 @EnableJpaRepositories(basePackages = "com.example.demo.repository")
+@EntityScan(basePackages = "com.example.demo.domain")
 @EnableTransactionManagement
 public class SpringConfig {
     @Bean
