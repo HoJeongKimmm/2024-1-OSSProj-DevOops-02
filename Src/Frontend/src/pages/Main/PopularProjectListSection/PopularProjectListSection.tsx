@@ -15,18 +15,21 @@ export const PopularProjectListSection: FC<PopularProjectListSectionProps> = ({ 
   const projectList = popularProjectList
   const projectList_test = camelizeKey(projectListSampleJson.project_list) as ProjectListType
   return (
-    <Root className={className}>
-      <Container>
-        <TitleContainer>
-          <TitleLogoImg src={projectListIcon1Img} alt={'요즘 뜨는 프로젝트 로고 이미지'} />
-          <TitleTypo>요즘 뜨는 프로젝트</TitleTypo>
-        </TitleContainer>
-        <ProjectCardContainer>
-          {projectList_test.slice(0, 4).map((projectItem) => (
-            <ProjectCard projectItem={projectItem} key={`project_card_${projectItem.key}`} />
-          ))}
-        </ProjectCardContainer>
-      </Container>
-    </Root>
+      <Root className={className}>
+        <Container>
+          <TitleContainer>
+            <TitleLogoImg src={projectListIcon1Img} alt={'요즘 뜨는 프로젝트 로고 이미지'} />
+            <TitleTypo>요즘 뜨는 프로젝트</TitleTypo>
+          </TitleContainer>
+          <ProjectCardContainer>
+            {projectList.slice(0, 4).map((projectItem) => (
+                <ProjectCard projectItem={projectItem} key={`project_card_${projectItem.key}`} />
+            ))}
+            {projectList_test.slice(0, 4).map((projectItem) => (
+                <ProjectCard projectItem={projectItem} key={`project_card_test_${projectItem.key}`} />
+            ))}
+          </ProjectCardContainer>
+        </Container>
+      </Root>
   )
 }
