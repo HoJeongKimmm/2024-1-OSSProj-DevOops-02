@@ -1,0 +1,9 @@
+branch-defaults:
+  default:
+    environment: Myapplication-env
+    group_suffix: null
+global:
+  application_name: Myapplication-envg
+  default_region: ap-northeast-2
+  profile: null
+  sc: git
