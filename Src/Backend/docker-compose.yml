@@ -3,11 +3,11 @@ services:
   backend:
     image: "hojeong22/myapplication:latest"
     ports:
-      - "80:8080"
+      - "8081:8080"
     restart: "always"
     logging:
       driver: "awslogs"
       options:
-        awslogs-region: "us-east-1"
-        awslogs-group: "/aws/elasticbeanstalk/your-environment-name/var/log/containers"
+        awslogs-region: "ap-northeast-2"
+        awslogs-group: "/aws/elasticbeanstalk/Myapplication-env/var/log/containers"
         awslogs-stream: "backend"
