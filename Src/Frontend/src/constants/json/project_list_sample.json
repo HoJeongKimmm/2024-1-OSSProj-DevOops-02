@@ -760,7 +760,7 @@
     },
     {
       "key": 11,
-      "title": "동국대학교 시간관리 어플리케이션 개발",
+      "title": "동국대학교 오픈소스 시연영상 제작",
       "project_type": "ETC",
       "popular_score": 10,
       "require_member_list": [
@@ -834,14 +834,14 @@
           ]
         }
       ],
-      "visited_number": 12,
+      "visited_number": 0,
       "like_number": 10,
-      "project_start_date": "2024-01-01",
-      "project_end_date": "2024-06-30",
-      "position": "MEMBER",
+      "project_start_date": "2024-06-10",
+      "project_end_date": "2024-06-15",
+      "position": "LEADER",
       "location": 11,
       "valid": "VALID",
-      "content": "<h3>팀원을 모집합니다 !</h3><p><br></p><p>안녕하세요 이번에 열리게될 공모전 팀원을 모집합니다. </p><p>저는 통계학과 김동완이라고 합니다.</p><p><br></p><p><strong>여러 공모전 경험이 있고 열정이 있는 사람을 구합니다 :)</strong></p>"
+      "content": "<h3>시연영상 테스트입니다 !</h3>"
     }
   ]
 }
